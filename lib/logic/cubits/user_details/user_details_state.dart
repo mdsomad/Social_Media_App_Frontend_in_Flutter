@@ -1,0 +1,22 @@
+import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
+import 'package:social_media_app_frontend_in_flutter/Models/user_profile_detels.dart';
+
+abstract class UserProfileState {}
+
+
+class UserProfileDetelsInitialState extends UserProfileState {}
+
+
+class UserProfileDetelsLoadingState extends UserProfileState {}
+
+
+class UserProfileDetelsLoadedState extends UserProfileState {
+  final UserProfileDetelsModel userProfileDetels;
+  UserProfileDetelsLoadedState(this.userProfileDetels);
+}
+
+
+class UserProfileDetelsErrorState extends UserProfileState  {
+  final String message;
+  UserProfileDetelsErrorState(this.message);
+}
