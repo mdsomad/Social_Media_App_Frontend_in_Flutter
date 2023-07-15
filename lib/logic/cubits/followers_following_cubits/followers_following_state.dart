@@ -1,11 +1,10 @@
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
-import 'package:social_media_app_frontend_in_flutter/Models/user_profile_detels.dart';
 
 
 
 
 abstract class FollowersFollowingState {
-  final List<UserProfileDetels> followers_following;
+  final List<UserProfileDetelsModel> followers_following;
   FollowersFollowingState(this.followers_following);
 }
 

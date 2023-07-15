@@ -1,5 +1,4 @@
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
-import 'package:social_media_app_frontend_in_flutter/Models/user_profile_detels.dart';
 
 abstract class UserProfileState {}
 

@@ -4,6 +4,7 @@ import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/formatter.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_cubits.dart';
@@ -37,7 +38,8 @@ class _CommentScreenState extends State<CommentScreen> {
               leading: GestureDetector(
                 onTap: () async {
                   //* Display the image in large form.
-                  log("Comment Clicked");
+                  log("imageClicked Comment User Profile Image ");
+                    Navigator.pushNamed(context, UsersProfiles.routeName,arguments:{"sId":data.comments[i].user!.sId!} );
                 },
                 child:  Container(
                   height: 50.0,
@@ -51,9 +53,15 @@ class _CommentScreenState extends State<CommentScreen> {
                           imageURLorPath: data.comments[i].user!.avater!.url)),
                 ),
               ),
-              title: Text(
-                 data.comments[i].user!.name!,
-                style: TextStyle(fontWeight: FontWeight.bold),
+              title: GestureDetector(
+                onTap: (){
+                  log("Comment User Name Clicked");
+                  Navigator.pushNamed(context, UsersProfiles.routeName,arguments:{"sId":data.comments[i].user!.sId!} );
+                },
+                child: Text(
+                   data.comments[i].user!.name!,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               subtitle: Text(data.comments[i].comment!),
               trailing:  PopupMenuButton(

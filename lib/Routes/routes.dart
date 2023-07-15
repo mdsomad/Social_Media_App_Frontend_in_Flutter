@@ -8,6 +8,8 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Login_Screen.d
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/login_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/signup_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/signup_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Posts/Provider/post_upload_provider.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Posts/addcaption_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/followers_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/following_screen.dart';
@@ -15,6 +17,7 @@ import 'package:social_media_app_frontend_in_flutter/Screens/home/Home_Screen.da
 import 'package:social_media_app_frontend_in_flutter/Screens/Comments/comment_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/main_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/splash/splash_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_edit_caption_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/user_posts_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_following_cubits/followers_cubits.dart';
@@ -45,53 +48,105 @@ class Routes {
       case MainScreen.routeName:
         return CupertinoPageRoute(builder: (context) => MainScreen());
 
-    case CommentScreen.routeName:
-      //  Map<String,dynamic> arguments =  settings.arguments as Map<String,dynamic>;
-      return CupertinoPageRoute(
-        fullscreenDialog: true,
-        builder: (context) => BlocProvider(
-          create: (context) => CommentsCubit(settings.arguments as PostModel),
-          child: CommentScreen(post: settings.arguments as PostModel,)
-        )
-      );
+      case CommentScreen.routeName:
+        return CupertinoPageRoute(
+            fullscreenDialog: true,
+            builder: (context) => BlocProvider(
+                create: (context) =>
+                    CommentsCubit(settings.arguments as PostModel),
+                child: CommentScreen(
+                  post: settings.arguments as PostModel,
+                )));
+
+
+
 
 
 
       case UserPostScreen.routeName:
-        Map<String,dynamic> arguments = settings.arguments as Map<String,dynamic>;
-        return CupertinoPageRoute(builder: (context) => UserPostScreen(data:arguments,));
+        Map<String, dynamic> arguments =
+            settings.arguments as Map<String, dynamic>;
+        return CupertinoPageRoute(
+            builder: (context) => UserPostScreen(
+                  data: arguments,
+                ));
 
 
 
-    case FollowersScreen.routeName:
-      // Map<String,dynamic> arguments = (settings.arguments??{}) as Map<String,dynamic>;
-      // Map arguments = (settings.arguments??{"name":"Amir"}) as Map;
-      return CupertinoPageRoute(
-        builder: (context) => BlocProvider(
-          create: (context) => FollowersCubit(settings.arguments as UserProfileDetelsModel),
-          child: FollowersScreen(userData:settings.arguments as UserProfileDetelsModel,)
-        )
-      );
 
-     
-        
+
+
+
+
+      case FollowersScreen.routeName:
+        // Map<String,dynamic> arguments = (settings.arguments??{}) as Map<String,dynamic>;
+        // Map arguments = (settings.arguments??{"name":"Amir"}) as Map;
+        return CupertinoPageRoute(
+            builder: (context) => BlocProvider(
+                create: (context) => FollowersCubit(
+                    settings.arguments as UserProfileDetelsModel),
+                child: FollowersScreen(
+                  userData: settings.arguments as UserProfileDetelsModel,
+                )));
+
+
+
+
+
+
       case FollowingScreen.routeName:
         return CupertinoPageRoute(
-        builder: (context) => BlocProvider(
-          create: (context) => FollowingCubit(settings.arguments as UserProfileDetelsModel),
-          child: FollowingScreen(user:settings.arguments as UserProfileDetelsModel)
-        )
-      );
+            builder: (context) => BlocProvider(
+                create: (context) => FollowingCubit(
+                    settings.arguments as UserProfileDetelsModel),
+                child: FollowingScreen(
+                    user: settings.arguments as UserProfileDetelsModel)));
+
+
+
+
+
 
 
       case UsersProfiles.routeName:
-       Map<String,dynamic> arguments = settings.arguments as Map<String,dynamic>;
+        Map<String, dynamic> arguments =
+            settings.arguments as Map<String, dynamic>;
         return CupertinoPageRoute(
-        builder: (context) => BlocProvider(
-          create: (context) => UserGetByIdCubit(arguments),
-          child: UsersProfiles(data:arguments)
-        )
-      );
+            builder: (context) => BlocProvider(
+                create: (context) => UserGetByIdCubit(arguments),
+                child: UsersProfiles(data: arguments)));
+
+
+
+
+
+
+
+      case AddCaptionScreen.routeName:
+        Map<String, dynamic> arguments =
+            settings.arguments as Map<String, dynamic>;
+        return CupertinoPageRoute(
+            builder: (context) => ChangeNotifierProvider(
+                  create: (context) => PostUploadProvider(context),
+                  child: AddCaptionScreen(
+                    data: arguments,
+                  ),
+                ));
+
+
+
+
+
+      case PostEditCaptionScreen.routeName:
+        // Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
+            return CupertinoPageRoute(
+                builder: (context) => PostEditCaptionScreen(post: settings.arguments as PostModel)
+            );
+
+
+
+
+
 
 
 

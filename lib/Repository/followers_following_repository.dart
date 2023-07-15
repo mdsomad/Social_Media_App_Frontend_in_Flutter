@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
-import 'package:social_media_app_frontend_in_flutter/Models/user_profile_detels.dart';
 import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
 import 'package:social_media_app_frontend_in_flutter/core/api.dart';
 
@@ -10,7 +9,7 @@ class FollowersFollowingRepository{
 
 
    //TODO: Create fetchComments function 
-  Future<List<UserProfileDetels>> fetchFollowers(String postId) async {
+  Future<List<UserProfileDetelsModel>> fetchFollowers(String postId) async {
     try {
       Response response = await _api.sendRequest.get("/Fetch/followers/$postId");
 
@@ -20,7 +19,7 @@ class FollowersFollowingRepository{
         throw apiResponseComments.message.toString();
       }
   
-      return (apiResponseComments.data as List<dynamic>).map((json) => UserProfileDetels.fromJson(json)).toList();
+      return (apiResponseComments.data as List<dynamic>).map((json) => UserProfileDetelsModel.fromJson(json)).toList();
 
       
     }
@@ -38,7 +37,7 @@ class FollowersFollowingRepository{
 
 
    //TODO: Create fetchComments function 
-  Future<List<UserProfileDetels>> fetchFollowing(String postId) async {
+  Future<List<UserProfileDetelsModel>> fetchFollowing(String postId) async {
     try {
       Response response = await _api.sendRequest.get("/Fetch/following/$postId");
 
@@ -48,7 +47,7 @@ class FollowersFollowingRepository{
         throw apiResponseFollowing.message.toString();
       }
   
-      return (apiResponseFollowing.data as List<dynamic>).map((json) => UserProfileDetels.fromJson(json)).toList();
+      return (apiResponseFollowing.data as List<dynamic>).map((json) => UserProfileDetelsModel.fromJson(json)).toList();
 
       
     }

@@ -30,6 +30,7 @@ class AppColor{
 
 
 
+
   static Color accent = const Color(0xff1ab7c3);
   static Color text = const Color(0xff212121);
   static Color textLight = const Color(0xff8a8a8a);
@@ -99,7 +100,7 @@ class TextStyles {
 
   static TextStyle heading2 = TextStyle(
     fontWeight: FontWeight.bold,
-    color: AppColors.text,
+    color: AppColors.white,
     fontSize: 32
   );
 

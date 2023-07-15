@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           navigationBarTheme: NavigationBarThemeData(
           backgroundColor: Colors.black,
-          indicatorColor: Color(0xCAF15800),
+          indicatorColor: Color(0xffFF0000),
           labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
           labelTextStyle: MaterialStateProperty.resolveWith(
               (states) => states.contains(MaterialState.selected)

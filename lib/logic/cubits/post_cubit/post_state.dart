@@ -22,3 +22,38 @@ class PostErrorState extends PostState {
   final String message;
   PostErrorState(this.message, super.post);
 }
+
+
+
+
+
+
+
+//TODO Create PostUpload Functions PostState
+class PostUploadLoadingState extends PostState {
+  PostUploadLoadingState(super.post);
+}
+
+
+class PostUploadErrorState extends PostState {
+  final String message;
+  PostUploadErrorState(this.message, super.post);
+}
+
+
+
+
+
+
+
+
+//TODO Create PostUpdateCaption Functions PostState
+class UpdateCaptionLoadingState extends PostState {
+  UpdateCaptionLoadingState(super.post);
+}
+
+
+class UpdateCaptionErrorState extends PostState {
+  final String message;
+  UpdateCaptionErrorState(this.message, super.post);
+}

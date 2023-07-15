@@ -1,14 +1,14 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:social_media_app_frontend_in_flutter/Models/user_profile_detels.dart';
+import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 
 class PostModel extends Equatable {
   Images? images;
   String? sId;
   String? caption;
-  UserProfileDetels? owner;
+  UserProfileDetelsModel? owner;
   List<String>? likes;
-  String? createdAt;
+  DateTime? createdAt;
   List<String>? comments;
 
   PostModel(
@@ -24,9 +24,9 @@ class PostModel extends Equatable {
     images = json['images'] != null ? new Images.fromJson(json['images']) : null;
     sId = json['_id'];
     caption = json['caption'];
-    owner = UserProfileDetels.fromJson(json["owner"]);
+    owner = UserProfileDetelsModel.fromJson(json["owner"]);
     likes = json['likes'].cast<String>();
-    createdAt = json['createdAt'];
+    createdAt = DateTime.tryParse(json['createdAt']);
     comments = json['comments'].cast<String>();
   }
 
@@ -39,7 +39,7 @@ class PostModel extends Equatable {
     data['caption'] = this.caption;
     data['owner'] = this.toJson();
     data['likes'] = this.likes;
-    data['createdAt'] = this.createdAt;
+    data['createdAt'] = this.createdAt!.toIso8601String();
     data['comments'] = this.comments;
     return data;
   }

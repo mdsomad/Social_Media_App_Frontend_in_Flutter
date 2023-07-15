@@ -11,7 +11,7 @@ class UserProfileDetelsModel {
   List<String>? followers;
   List<String>? following;
   bool? userverify;
-  String? createdAt;
+  DateTime? createdAt;
 
   UserProfileDetelsModel(
       {this.avater,
@@ -34,7 +34,7 @@ class UserProfileDetelsModel {
     followers = json['followers'].cast<String>();
     following = json['following'].cast<String>();
     userverify = json['userverify'];
-    createdAt = json['createdAt'];
+    createdAt = DateTime.tryParse(json['createdAt']);
   }
 
   Map<String, dynamic> toJson() {
@@ -49,7 +49,7 @@ class UserProfileDetelsModel {
     data['followers'] = this.followers;
     data['following'] = this.following;
     data['userverify'] = this.userverify;
-    data['createdAt'] = this.createdAt;
+    data['createdAt'] = this.createdAt?.toIso8601String();
     return data;
   }
 }

@@ -10,9 +10,7 @@ import 'package:social_media_app_frontend_in_flutter/Models/Comments_Model.dart'
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/following_screen.dart';
-import 'package:social_media_app_frontend_in_flutter/Screens/home/Widgets/BottomSheet_Widget.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/home/Widgets/HomeView.dart';
-import 'package:social_media_app_frontend_in_flutter/Screens/home/Widgets/home_list_view_widget.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Comments/comment_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_cubits.dart';
@@ -47,43 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(child: Text(state.message));
           }
 
-          return HomeView(allPosts: state.post,);
-          
-          //  ListView.builder(
-          //   shrinkWrap: true,
-          //   itemCount: state.post.length,
-          //   itemBuilder: (context, index) {
-          //     var post = state.post[index];
-          //     return HomeListView(
-          //         post: post,
-          //         userName: post.owner!.name.toString(),
-          //         caption: post.caption!,
-          //         urlPost: post.image!.url!,
-          //         urlProfilePhoto: post.owner!.avater!.url.toString(),
-          //         userverify: post.owner!.userverify as bool,
-          //         likes: post.likes!.length.toString(),
-          //         onPreass: () {
-                    
-          //           BlocProvider.of<PostCubit>(context).PostLink(sId: post.sId!);
-          //           log("Usi Id Call --> ${SessionController().userid.toString()}");
-          //           // log(SessionControllerTolen().token.toString());
-          //         },
-          //         likecolor: post.likes!.contains(SessionController().userid)
-          //             ? true
-          //             : false,
-          //         commentonPress: () {
-          //           log("Clicked Comment Button");
-          //            Navigator.pushNamed(context, CommentScreen.routeName, arguments: post);              
-          //         }
-                  
-                  
-          //         );
-          //   },
-          // );
-
-
-
-
+          return HomeView(allPosts: state.post,isUserPosts: false,);
+  
         },
       ),
     );

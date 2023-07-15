@@ -1,6 +1,7 @@
 //TODO: Create PostCubit Class
 
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
@@ -31,10 +32,11 @@ class PostCubit extends Cubit<PostState> {
 
 
 
-   // TODO Create User signIn function
-  void PostLink({
-    required String sId,
-  }) async {
+
+
+
+// TODO Create LikeAndUnlikePost function
+void PostLink({required String sId,}) async {
     try {
       PostModel postLiked = await _postRepository.LikeAndUnlikePost(sId);
        
@@ -50,6 +52,55 @@ class PostCubit extends Cubit<PostState> {
     } catch(ex) {
       Loggerclass.logger.e(ex.toString());
       emit( PostErrorState(ex.toString(), state.post) );
+    }
+  }
+
+
+
+
+
+// TODO Create LikeAndUnlikePost function
+void UpdateCaption({required String sId,required String caption}) async {
+    emit(UpdateCaptionLoadingState(state.post));
+    try {
+      PostModel postUpdated = await _postRepository.UpdateCaption(sId: sId, caption: caption);
+       
+
+      int index = state.post.indexOf(postUpdated);
+      if(index == -1) return;
+
+      List<PostModel> newList = state.post;
+       newList[index] = postUpdated;
+       emit(PostLoadedState(newList));
+
+
+    } catch(ex) {
+      Loggerclass.logger.e(ex.toString());
+      emit(UpdateCaptionErrorState(ex.toString(), state.post) );
+    }
+  }
+
+
+
+
+
+
+
+
+// TODO Create PostUpload function
+void PostUpload({required File file, required String caption}) async {
+    emit(PostUploadLoadingState(state.post));
+    try {
+
+      PostModel newPost = await _postRepository.PostUpload(file,caption);
+
+      List<PostModel> newPostList = [newPost,...state.post];
+      emit(PostLoadedState(newPostList));
+
+
+    } catch(ex) {
+      Loggerclass.logger.e(ex.toString());
+      emit(PostUploadErrorState(ex.toString(), state.post) );
     }
   }
 

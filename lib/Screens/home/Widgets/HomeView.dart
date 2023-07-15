@@ -1,14 +1,22 @@
 import 'dart:developer';
-
+import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
-import 'package:social_media_app_frontend_in_flutter/Screens/home/Widgets/BottomSheet_Widget.dart';
+import 'package:social_media_app_frontend_in_flutter/Resources/Colors/app_colors.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Comments/comment_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_edit_caption_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
+import 'package:social_media_app_frontend_in_flutter/logic/cubits/post_cubit/post_cubit.dart';
+import 'package:timeago/timeago.dart' as timeago;
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 class HomeView extends StatelessWidget {
+  bool isUserPosts;
   List<PostModel> allPosts;
-  HomeView({super.key,required this.allPosts});
+  HomeView({super.key,required this.allPosts,required this.isUserPosts});
 
 
 
@@ -118,21 +126,21 @@ class HomeView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(children: [
-                      Text('Social Media', style: TextStyle(fontSize: 30)),
-                      Padding(
+                      Text(isUserPosts  ? " Posts": 'Social Media', style: TextStyle(fontSize: 30)),
+                    isUserPosts ? SizedBox() :  Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(Icons.radio_button_unchecked,
                             color: Colors.orange),
                       )
                     ]),
-                    Icon(Icons.message)
+                   isUserPosts ? SizedBox() : Icon(Icons.message)
                   ],
                 ),
               ),
 
 
-              SliverToBoxAdapter(
-                child: SizedBox(
+           SliverToBoxAdapter(
+                child: isUserPosts ? SizedBox()  :SizedBox(
                   height: 120,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
@@ -224,16 +232,42 @@ class PostCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    postData.owner!.name!,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  GestureDetector(
+                   onTap: (){
+                    log("Checking Name");
+                     Navigator.pushNamed(context, UsersProfiles.routeName,arguments:{"sId":postData.owner!.sId!} );
+                   },
+                    child: Row(
+                      children: [
+                        Text(
+                          postData.owner!.name!,
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(width: 5,),
+                        postData.owner!.userverify!
+                        ? Icon(
+                            Icons.verified_user,
+                            size: 20,
+                            color: Color(0xff0C9C28),
+                          )
+                        : SizedBox()
+                      ],
+                    ),
                   ),
-                  Text('15 mins ago', style: TextStyle(color: Colors.white38))
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(postData.caption!, style: TextStyle(color: Colors.white70,fontSize: 15))
+                 
                 ],
-              )
+              ),
+              
             ]),
-
-            Icon(Icons.more_vert)
+           
+            IconButton(onPressed: (){
+              BottomSheet(context);
+            }, icon: Icon(Icons.more_vert))
+            
 
           ]),
 
@@ -278,12 +312,17 @@ class PostCard extends StatelessWidget {
 
                   IconButton(onPressed: (){
                     log("Click");
-                  }, icon:Icon(Icons.favorite_border_outlined,) ),
+                    BlocProvider.of<PostCubit>(context).PostLink(sId: postData.sId!);
+                  }, icon:postData.likes!.contains(SessionController().userid) ? Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border_outlined) ) ,
 
                   SizedBox(
                     width: 15,
                   ),
-                  Icon(Icons.message_outlined,),
+                  IconButton(onPressed: (){
+                    log("Clicked Comment Button");
+                   Navigator.pushNamed(context, CommentScreen.routeName, arguments:postData);         
+                  }, icon: Icon(Icons.message_outlined,))
+                 
 
                 ],
               ),
@@ -296,11 +335,82 @@ class PostCard extends StatelessWidget {
           Text(
             "View All ${postData.comments!.length} comments",
             style: TextStyle(color: Colors.grey),
-          )
+          ),
+        const SizedBox(
+            height: 5,
+          ),
+          Text(timeago.format(postData.createdAt!), style: TextStyle(color: Colors.white38)),
+  
         ],
       ),
     );
+
+
+
+
+
+
+
+    
   }
+
+
+
+
+
+  BottomSheet(BuildContext context) {  //* <-- showModalBottomSheet 2 Method
+   return showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: ((context) => Container(
+              height: 180,
+              decoration: BoxDecoration(
+                color: AppColor.bodyColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                child: Column(
+                  
+                  children: [
+                    Container(
+                      height: 5,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15)
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    ListTile(
+                      onTap: (){
+                        log("Click Edit Caption");
+                        Navigator.pushNamed(context, PostEditCaptionScreen.routeName,arguments:postData);
+                      },
+                      leading: Icon(Icons.edit,color: Colors.green,),
+                      title:Text("Edit Caption"),
+                    ),
+                    Divider(),
+                    ListTile(
+                      onTap: (){
+                        log("Click Edit Caption");
+                      },
+                      leading: Icon(Icons.delete,color: Colors.red,),
+                      title:Text("Delete Post"),
+                    )
+                  ],
+                ),
+              ),
+            )));
+  }
+  
+  
+  
+  
+  
 }
 
 
