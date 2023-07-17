@@ -60,23 +60,25 @@ void PostLink({required String sId,}) async {
 
 
 // TODO Create LikeAndUnlikePost function
-void UpdateCaption({required String sId,required String caption}) async {
+Future <bool>UpdateCaption({required String sId,required String caption}) async {
     emit(UpdateCaptionLoadingState(state.post));
     try {
       PostModel postUpdated = await _postRepository.UpdateCaption(sId: sId, caption: caption);
        
 
       int index = state.post.indexOf(postUpdated);
-      if(index == -1) return;
+      if(index == -1) return false;
 
       List<PostModel> newList = state.post;
        newList[index] = postUpdated;
        emit(PostLoadedState(newList));
-
+       
+       return true;
 
     } catch(ex) {
       Loggerclass.logger.e(ex.toString());
       emit(UpdateCaptionErrorState(ex.toString(), state.post) );
+      return true;
     }
   }
 

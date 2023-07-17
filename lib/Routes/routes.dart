@@ -24,6 +24,8 @@ import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_foll
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_following_cubits/following_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_get_by_id_cubit.dart';
 
+import '../Screens/user_posts/Provider/post_edit_caption_provider.dart';
+
 class Routes {
   static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -140,7 +142,9 @@ class Routes {
       case PostEditCaptionScreen.routeName:
         // Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
             return CupertinoPageRoute(
-                builder: (context) => PostEditCaptionScreen(post: settings.arguments as PostModel)
+                builder: (context) => ChangeNotifierProvider(
+                  create: (context) => PostEditCaptionProvider(context),
+                  child: PostEditCaptionScreen(post: settings.arguments as PostModel))
             );
 
 

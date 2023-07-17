@@ -49,8 +49,8 @@ class PostEditCaptionProvider with ChangeNotifier {
 
 
 //TODO Create postUpload Function
-void postUpdateCaption(String sId) async {
-     BlocProvider.of<PostCubit>(context).UpdateCaption(sId:sId,caption:updateCaptionController.text.toString());
+Future <bool>postUpdateCaption({required String sId,required String caption}) async {
+    return BlocProvider.of<PostCubit>(context).UpdateCaption(sId:sId,caption:caption);
 }
 
 
