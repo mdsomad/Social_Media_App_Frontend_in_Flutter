@@ -7,12 +7,13 @@ class RoundButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
   final bool loading;
-  const RoundButton({Key? key,required this.title,required this.onTap,this.loading = false}) : super(key: key);
+  final bool isColorRed;
+ RoundButton({Key? key,required this.title,required this.onTap,this.loading = false,  this.isColorRed = false,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Material(
-       color:AppColors.accent,                 // <-- CALL AppColors Class
+       color:isColorRed ? Colors.red : AppColors.accent,                 // <-- CALL AppColors Class
        borderRadius: BorderRadius.circular(10),
       child: InkWell(
       onTap: onTap,

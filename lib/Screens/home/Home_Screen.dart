@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:developer' as devlog;
 
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Comments_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
@@ -19,6 +20,8 @@ import 'package:social_media_app_frontend_in_flutter/logic/cubits/post_cubit/pos
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/post_cubit/post_state.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_cubit/user_cubit.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_cubit/user_state.dart';
+
+import '../user_posts/Provider/post_edit_caption_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

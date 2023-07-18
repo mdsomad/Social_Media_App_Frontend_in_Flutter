@@ -110,6 +110,40 @@ void PostUpload({required File file, required String caption}) async {
 
 
 
+
+
+
+
+
+
+
+
+// TODO Create LikeAndUnlikePost function
+Future <bool>PostDelete({required PostModel post}) async {
+    emit(PostDeleteLoadingState(state.post));
+    try {
+
+      bool postDelete = await _postRepository.PostDelete(sId: post.sId!, );
+       
+
+      int index = state.post.indexOf(post);
+      if(index == -1) return false;
+
+      List<PostModel> newList = state.post;
+       newList.removeAt(index);
+       emit(PostLoadedState(newList));
+       
+       return postDelete;
+
+    } catch(ex) {
+      Loggerclass.logger.e(ex.toString());
+      emit(PostDeleteErrorState(ex.toString(), state.post) );
+      return true;
+    }
+  }
+
+
+
 // TODO: Create sortAndLoad function
   void sortAndLoad(List<PostModel> posts) {
     // posts.sort((a, b) => b.createdAt.compareTo(a.createdAt));

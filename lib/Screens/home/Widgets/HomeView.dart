@@ -3,14 +3,18 @@ import 'dart:developer';
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Resources/Colors/app_colors.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Comments/comment_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
-import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_edit_caption_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_delete_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_edit_caption_screen%20copy.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/post_cubit/post_cubit.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../../user_posts/Provider/post_edit_caption_provider.dart';
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
@@ -400,13 +404,17 @@ class PostCard extends StatelessWidget {
                       title:Text("Edit Caption"),
                     ),
                     Divider(),
+
                     ListTile(
                       onTap: (){
                         log("Click Edit Caption");
+                         Navigator.pushNamed(context, PostDeleteScreen.routeName,arguments:postData);
                       },
                       leading: Icon(Icons.delete,color: Colors.red,),
                       title:Text("Delete Post"),
                     )
+                   
+                    
                   ],
                 ),
               ),

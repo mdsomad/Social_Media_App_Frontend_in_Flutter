@@ -57,3 +57,27 @@ class UpdateCaptionErrorState extends PostState {
   final String message;
   UpdateCaptionErrorState(this.message, super.post);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TODO Create PostDelete Functions PostState
+class PostDeleteLoadingState extends PostState {
+  PostDeleteLoadingState(super.post);
+}
+
+
+class PostDeleteErrorState extends PostState {
+  final String message;
+  PostDeleteErrorState(this.message, super.post);
+}

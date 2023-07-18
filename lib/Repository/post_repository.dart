@@ -162,6 +162,42 @@ Future<PostModel> UpdateCaption({required String sId,required String caption}) a
 
 
 
+
+//TODO: Create fetchProductsByCategory function 
+Future<bool> PostDelete({required String sId}) async {
+
+  try {
+   
+    Response response = await _apiBearerToken.sendRequest.delete("/post/delete/$sId",
+
+    options: Options(headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer ${SessionControllerTolen().token.toString()}",
+          })
+    );
+   
+   log(response.statusCode.toString());
+
+   ApiResponsePost apiResponsePost = ApiResponsePost.fromResponse(response);
+
+      if(!apiResponsePost.success) {
+          throw apiResponsePost.message.toString();
+      }
+
+      return apiResponsePost.success;
+
+    } catch (ex) {
+      Loggerclass.logger.e(ex);
+      rethrow;
+    }
+
+  }
+
+
+
+
+
+
  
 
 

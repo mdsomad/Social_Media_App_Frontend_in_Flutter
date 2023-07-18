@@ -17,13 +17,15 @@ import 'package:social_media_app_frontend_in_flutter/Screens/home/Home_Screen.da
 import 'package:social_media_app_frontend_in_flutter/Screens/Comments/comment_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/main_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/splash/splash_screen.dart';
-import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_edit_caption_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_delete_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_edit_caption_screen%20copy.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/user_posts_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_following_cubits/followers_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_following_cubits/following_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_get_by_id_cubit.dart';
 
+import '../Screens/user_posts/Provider/post_delete_provider.dart';
 import '../Screens/user_posts/Provider/post_edit_caption_provider.dart';
 
 class Routes {
@@ -145,6 +147,15 @@ class Routes {
                 builder: (context) => ChangeNotifierProvider(
                   create: (context) => PostEditCaptionProvider(context),
                   child: PostEditCaptionScreen(post: settings.arguments as PostModel))
+            );
+
+
+            
+      case PostDeleteScreen.routeName:
+            return CupertinoPageRoute(
+                builder: (context) => ChangeNotifierProvider(
+                  create: (context) => PostDeleteProvider(context),
+                  child: PostDeleteScreen(post: settings.arguments as PostModel))
             );
 
 
