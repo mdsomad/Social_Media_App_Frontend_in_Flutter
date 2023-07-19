@@ -65,14 +65,41 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                               // Navigator.of(context).pop();
                             },
                             child: Icon(Icons.arrow_back_ios)),
-                        GestureDetector(
-                            onTap: () {
-                              cubit.signOut().then((value) {
-                                Navigator.pushReplacementNamed(
-                                    context, LoginScreen.routeName);
-                              });
-                            },
-                            child: Icon(Icons.more_vert)),
+                        PopupMenuButton(
+                  icon: Icon(Icons.more_vert),
+                  itemBuilder: (context)=>[
+
+                  PopupMenuItem(
+                    value: 1,
+                  child: IconButton(onPressed: (){
+      
+                      Navigator.pop(context);
+                  }, icon: Icon(Icons.edit,color: Colors.green,))
+                  ),
+                  PopupMenuItem(
+                  value: 2,
+                  child: ListTile(
+                    leading:Icon(Icons.logout,color: Colors.red,) ,
+                    title: Text("Logout"),
+                  )
+                  
+                  
+                  //  IconButton(onPressed: (){
+                  //      cubit.signOut().then((value) {
+                  //               Navigator.pushReplacementNamed(
+                  //                   context, LoginScreen.routeName);
+                  //             });
+                  //     Navigator.pop(context);
+                  // }, icon: Icon(Icons.logout,color: Colors.red,))
+                  ),
+
+                    
+                    
+
+                 
+                    
+                  ])
+
                       ],
                     ),
                   ),

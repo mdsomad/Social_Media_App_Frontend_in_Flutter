@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Resources/Colors/app_colors.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/my_profile_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/post_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Search/user_search_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/home/Home_Screen.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_details_cubit.dart';
 
@@ -21,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> _widgetOptions = <Widget>[
     //* <-- First Create ( List ) <-- iska kaam hai Pages ko display karta hai
     HomeScreen(),
-    Text(""),
+    UserSearchScreen(),
     PostScreen(),
     Text(""),
     BlocProvider(

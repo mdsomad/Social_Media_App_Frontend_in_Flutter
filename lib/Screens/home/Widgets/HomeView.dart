@@ -181,7 +181,7 @@ class HomeView extends StatelessWidget {
                     itemBuilder: (context, index) {
 
                       return PostCard(        //* <-- PostCard Widget Called
-                        likeImagesList: likeImagesList, //* <-- likeImagesList Data Send
+                        likeImagesList: allPosts, //* <-- likeImagesList Data Send
                         postData: allPosts[index],      //* <-- postData List Data Send
                       );
 
@@ -209,7 +209,7 @@ class PostCard extends StatelessWidget {
     required this.postData,
   });
 
-  final List<String> likeImagesList;
+  final List<PostModel> likeImagesList;
   final PostModel postData;
   
 
@@ -227,7 +227,7 @@ class PostCard extends StatelessWidget {
             Row(children: [
               CircleAvatar(
                 radius: 30,
-                backgroundImage: NetworkImage(postData.images!.url!),
+                backgroundImage: NetworkImage(postData.owner!.avater!.url!),
               ),
 
               SizedBox(
@@ -270,7 +270,7 @@ class PostCard extends StatelessWidget {
             ]),
            
             IconButton(onPressed: (){
-              BottomSheet(context);
+              postData.owner!.sId! == SessionController().userid ?  BottomSheet(context) : SizedBox();
             }, icon: Icon(Icons.more_vert))
             
 
@@ -300,9 +300,9 @@ class PostCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  LikesImages(
-                    likeImages: likeImagesList,
-                  ),
+                  // LikesImages(
+                  //   likeImages: likeImagesList,
+                  // ),
 
                   SizedBox(
                     width: 15,
