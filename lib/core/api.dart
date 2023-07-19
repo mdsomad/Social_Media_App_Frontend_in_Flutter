@@ -121,6 +121,33 @@ class UserProfileDetelsApiResponse {
 
 
 
+//TODO: Create Class ApiResponse
+class SearchUserApiResponse {
+  bool success;
+  dynamic users;
+  String? message;
+
+  SearchUserApiResponse({
+    required this.success,
+    this.users,
+    this.message
+  });
+
+  factory SearchUserApiResponse.fromResponse(Response response) {
+    final data = response.data as Map<String, dynamic>;
+    return SearchUserApiResponse(
+      success: data["success"],
+      users: data["users"],
+      message: data["message"] ?? "Unexpected error"
+    );
+  }
+
+  get statusCode => null;
+}
+
+
+
+
 
 
 

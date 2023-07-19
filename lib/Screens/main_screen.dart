@@ -6,6 +6,7 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Posts/post_screen.d
 import 'package:social_media_app_frontend_in_flutter/Screens/Search/user_search_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/home/Home_Screen.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_details_cubit.dart';
+import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_search_cubits/user_search_cubit.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -22,7 +23,10 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> _widgetOptions = <Widget>[
     //* <-- First Create ( List ) <-- iska kaam hai Pages ko display karta hai
     HomeScreen(),
-    UserSearchScreen(),
+    BlocProvider(
+      create: (context) => SearchUserCubit(),
+      child: UserSearchScreen(),
+    ),
     PostScreen(),
     Text(""),
     BlocProvider(
@@ -37,41 +41,37 @@ class _MainScreenState extends State<MainScreen> {
     //  final userPreferences = Provider.of<UserSharedPreferences>(context);
 
     return Scaffold(
-        bottomNavigationBar:NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (value){
-            setState(() {
+        bottomNavigationBar: NavigationBar(
+            selectedIndex: _currentIndex,
+            onDestinationSelected: (value) {
+              setState(() {
                 _currentIndex = value;
               });
-        },
-        //* ignore: prefer_const_literals_to_create_immutables
-        destinations: [
-          NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home),
-              label: "Home"),
-          NavigationDestination(
-              icon: Icon(Icons.search_outlined),
-              selectedIcon: Icon(Icons.search),
-              label: "Search"),
-          NavigationDestination(
-              icon: Icon(Icons.add_circle_outline),
-              selectedIcon: Icon(Icons.add_circle),
-              label: "Post"),
-          NavigationDestination(
-              icon: Icon(Icons.notifications_outlined),
-              selectedIcon: Icon(Icons.notifications),
-              label: "Notifications"),
-          NavigationDestination(
-              icon: Icon(Icons.account_circle_outlined),
-              selectedIcon: Icon(Icons.account_circle),
-              label: "Profile"),
-        ]),
-        
-        
-        
-        
-        
+            },
+            //* ignore: prefer_const_literals_to_create_immutables
+            destinations: [
+              NavigationDestination(
+                  icon: Icon(Icons.home_outlined),
+                  selectedIcon: Icon(Icons.home),
+                  label: "Home"),
+              NavigationDestination(
+                  icon: Icon(Icons.search_outlined),
+                  selectedIcon: Icon(Icons.search),
+                  label: "Search"),
+              NavigationDestination(
+                  icon: Icon(Icons.add_circle_outline),
+                  selectedIcon: Icon(Icons.add_circle),
+                  label: "Post"),
+              NavigationDestination(
+                  icon: Icon(Icons.notifications_outlined),
+                  selectedIcon: Icon(Icons.notifications),
+                  label: "Notifications"),
+              NavigationDestination(
+                  icon: Icon(Icons.account_circle_outlined),
+                  selectedIcon: Icon(Icons.account_circle),
+                  label: "Profile"),
+            ]),
+
         //  BottomNavigationBar(
         //     //* <-- BottomNavigationBar Using Example
         //     type: BottomNavigationBarType.fixed,
@@ -122,10 +122,6 @@ class _MainScreenState extends State<MainScreen> {
         //       //   icon: Icon(Icons.person_outlined)
         //       //   )
         //     ]),
-
-
-
-
 
         body: _widgetOptions.elementAt(
             _currentIndex) //* <-- Call List Widget  (Widget Name This --> _widgetOptions )

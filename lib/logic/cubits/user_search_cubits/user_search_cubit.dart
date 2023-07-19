@@ -20,10 +20,10 @@ class SearchUserCubit extends Cubit<UserSearchState> {
 
 
 // TODO Create SearchUser function
-void SearchUser({required String name,}) async {
+void SearchUser({required String searchName,}) async {
     try {
 
-      List<UserProfileDetelsModel> searchUser = await _searchUserRepository.SearchUser(name);
+      List<UserProfileDetelsModel> searchUser = await _searchUserRepository.SearchUser(searchName: searchName);
        
 
    
@@ -32,7 +32,7 @@ void SearchUser({required String name,}) async {
 
     } catch(ex) {
       Loggerclass.logger.e(ex.toString());
-      emit( SearchUserErrorState(ex.toString(),state.searchUser) );
+      emit( SearchUserErrorState(ex.toString(),state.searchUser));
     }
   }
 

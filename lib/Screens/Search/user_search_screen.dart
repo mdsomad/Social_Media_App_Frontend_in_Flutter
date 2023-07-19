@@ -1,13 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-
-
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
+import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_search_cubits/user_search_cubit.dart';
+import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_search_cubits/user_search_state.dart';
 
 class UserSearchScreen extends StatelessWidget {
-  const UserSearchScreen({super.key});
+  UserSearchScreen({super.key});
 
+  final searchController = TextEditingController();
+  
+  bool isSearch = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,76 +22,99 @@ class UserSearchScreen extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Container(
-          
               decoration: BoxDecoration(
-               color: Colors.black,
-               borderRadius: BorderRadius.circular(7)
-          
-              ),
+                  color: Colors.black, borderRadius: BorderRadius.circular(7)),
               child: TextFormField(
+                controller: searchController,
                 decoration: InputDecoration(
-                  
                   hintText: "Search For User",
-  
-                  border:OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(7),
-                    borderSide: BorderSide(
-                      color: Colors.yellow,
-                      width: 50,
-                    )),
-  
-                  
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        BlocProvider.of<SearchUserCubit>(context)
+                            .SearchUser(searchName: searchController.text);
+                      },
+                      icon: Icon(Icons.search)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(7),
+                      borderSide: BorderSide(
+                        color: Colors.yellow,
+                        width: 50,
+                      )),
                 ),
-
                 onChanged: (value) {
+                  // BlocProvider.of<SearchUserCubit>(context).SearchUser(searchName: value);
                   log(value);
                 },
-                    
               ),
             ),
           ),
-
-         Divider(height: 10,thickness: 1,),
-        Expanded(
-          child: Container(
-            // color: Colors.yellow,
-            child:ListView(
-              children: [
-                ListTile(
-                  onTap: (){
-                    log("Clicked Search");
-                  },
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.yellow,
-                    backgroundImage: NetworkImage("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"),
-                    
-                  ),
-                  title: Row(
-                    children: [
-                      Text("Somad"),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Icon(Icons.verified_user,size: 16,color: Colors.green,)
-
-                    ],
-                  ),
-                  trailing: IconButton(onPressed: (){}, icon: Icon(Icons.close,size: 17,)),
-                )
-              ],
-            ),
+          Divider(
+            height: 10,
+            thickness: 1,
           ),
-        )
+          BlocBuilder<SearchUserCubit, UserSearchState>(
+            builder: (context, state) {
+
+            if(state is SearchUserLoadingState){
+             return Expanded(child: Center(child: CircularProgressIndicator(),));
+           }
 
 
+           if(state is SearchUserErrorState){
+              Expanded(child: Center(child: Text(state.message),));
+           }
+              
+              return Expanded(
+                child: Container(
+                  // color: Colors.yellow,
+                  child:  ListView(
+                    children: [
 
-
-          
+                      for (var i = 0; i < state.searchUser.length; i++)
+                      ListTile(
+                        onTap: () {
+                          log("Clicked Search");
+                          Navigator.pushNamed(context, UsersProfiles.routeName,arguments:{"sId":state.searchUser[i].sId!} );
+                        },
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.yellow,
+                          backgroundImage: NetworkImage(
+                              state.searchUser[i].avater!.url!
+                              // "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                              ),
+                        ),
+                        title: Row(
+                          children: [
+                            Text(state.searchUser[i].name!),
+                            SizedBox(
+                              width: 5,
+                            ),
+                           state.searchUser[i].userverify == true ? Icon(
+                              Icons.verified_user,
+                              size: 16,
+                              color: Colors.green,
+                            ) : SizedBox(),
+                          ],
+                        ),
+                        trailing: IconButton(
+                            onPressed: () {
+                              state.searchUser.removeAt(i);
+                            },
+                            icon: Icon(
+                              Icons.close,
+                              size: 17,
+                            )),
+                      )
+                    ],
+                  ) 
+                ),
+              );
+            },
+          )
         ],
       ),
-      
     );
   }
 }
