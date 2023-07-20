@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Login_Screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Settings/settings_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/followers_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/following_Screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/user_posts_screen.dart';
@@ -71,10 +72,13 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
 
                   PopupMenuItem(
                     value: 1,
-                  child: IconButton(onPressed: (){
-      
-                      Navigator.pop(context);
-                  }, icon: Icon(Icons.edit,color: Colors.green,))
+                  child: ListTile(
+                    onTap: (){
+                    Navigator.pushNamed(context, SettingsScreen.routeName);
+                    },
+                    leading:Icon(Icons.settings,color: Colors.green,) ,
+                    title: Text("Settings"),
+                  )
                   ),
                   PopupMenuItem(
                   value: 2,

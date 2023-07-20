@@ -10,6 +10,8 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/signu
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/signup_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/Provider/post_upload_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/addcaption_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Settings/Widgets/change_password_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Settings/settings_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/followers_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/following_screen.dart';
@@ -156,6 +158,21 @@ class Routes {
                 builder: (context) => ChangeNotifierProvider(
                   create: (context) => PostDeleteProvider(context),
                   child: PostDeleteScreen(post: settings.arguments as PostModel))
+            );
+
+
+
+
+      case SettingsScreen.routeName:
+            return CupertinoPageRoute(
+                builder: (context) => SettingsScreen()
+            );
+
+
+
+      case ChangePasswordScreen.routeName:
+            return CupertinoPageRoute(
+                builder: (context) => ChangePasswordScreen()
             );
 
 

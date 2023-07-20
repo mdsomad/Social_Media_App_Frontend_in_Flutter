@@ -144,7 +144,7 @@ showDialogOpt(BuildContext context) {
             decoration: BoxDecoration(color:Colors.red),
             child: Center(
               child: Text(
-                "Add Video",
+                "Add Photo",
                 style: TextStyle(
                     fontSize: 25,
                     color: Colors.white,

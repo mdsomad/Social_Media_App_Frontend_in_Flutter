@@ -32,8 +32,11 @@ class UserSearchScreen extends StatelessWidget {
                   hintText: "Search For User",
                   suffixIcon: IconButton(
                       onPressed: () {
-                        BlocProvider.of<SearchUserCubit>(context)
+                        if(searchController.text != ""){
+
+                         BlocProvider.of<SearchUserCubit>(context)
                             .SearchUser(searchName: searchController.text);
+                        }
                       },
                       icon: Icon(Icons.search)),
                   border: OutlineInputBorder(
