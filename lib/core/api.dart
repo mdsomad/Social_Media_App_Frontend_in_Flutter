@@ -296,3 +296,32 @@ class ApiResponseUserToFollow {
 
 
 
+
+
+
+// TODO: Create ApiResponseUserToFollow class
+class ApiResponseChangePassword {
+  bool success;
+  String? message;
+
+  ApiResponseChangePassword({
+    required this.success,
+    this.message
+  });
+
+  factory ApiResponseChangePassword.fromResponse(Response response) {
+    final data = response.data as Map<String, dynamic>;
+    return ApiResponseChangePassword(
+      success: data["success"],
+      message: data["message"] ?? "Unexpected error"
+    );
+  }
+
+  get statusCode => null;
+}
+
+
+
+
+
+

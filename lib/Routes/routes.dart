@@ -10,6 +10,7 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/signu
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/signup_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/Provider/post_upload_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/addcaption_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Settings/Provider/change_password_Provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Settings/Widgets/change_password_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Settings/settings_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
@@ -22,6 +23,7 @@ import 'package:social_media_app_frontend_in_flutter/Screens/splash/splash_scree
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_delete_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/post_edit_caption_screen%20copy.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/user_posts_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/logic/cubits/change_password_cubits/change_password_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_following_cubits/followers_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_following_cubits/following_cubits.dart';
@@ -172,7 +174,12 @@ class Routes {
 
       case ChangePasswordScreen.routeName:
             return CupertinoPageRoute(
-                builder: (context) => ChangePasswordScreen()
+                builder: (context) => BlocProvider(
+                  create: (context) => ChangePasswordCubit(),
+                  child: ChangeNotifierProvider(
+                    create: (context) =>ChangePasswordProvider(context) ,
+                    child: ChangePasswordScreen()),
+                )
             );
 
 

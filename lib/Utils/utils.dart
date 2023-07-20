@@ -50,6 +50,29 @@ class Utils {
 
 
 
+  //TODO ftushBarSussessMessage function create
+  static void ftushBarSussessMessage(String message,BuildContext context){         //* <-- ERROR Message Show karne ka kaam Aata hai
+     showFlushbar(
+      context: context,
+      flushbar: Flushbar(
+        message: message,
+        forwardAnimationCurve: Curves.decelerate,
+        margin: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+        padding: EdgeInsets.all(15),
+        backgroundColor: Colors.green,
+        reverseAnimationCurve: Curves.easeInOut,
+        positionOffset: 20,
+        duration: Duration(seconds: 5),
+        borderRadius: BorderRadius.circular(10),
+        flushbarPosition: FlushbarPosition.TOP,
+        icon: Icon(Icons.file_download_done,color: AppColor.white,),
+      )..show(context)
+      );
+  }
+
+
+
+
 
 
 
