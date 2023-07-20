@@ -8,6 +8,7 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Login_Screen.d
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/login_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/signup_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/signup_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/update_profile.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/Provider/post_upload_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/addcaption_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Settings/Provider/change_password_Provider.dart';
@@ -167,7 +168,7 @@ class Routes {
 
       case SettingsScreen.routeName:
             return CupertinoPageRoute(
-                builder: (context) => SettingsScreen()
+                builder: (context) => SettingsScreen(userModel:settings.arguments as UserProfileDetelsModel ,)
             );
 
 
@@ -180,6 +181,12 @@ class Routes {
                     create: (context) =>ChangePasswordProvider(context) ,
                     child: ChangePasswordScreen()),
                 )
+            );
+
+
+      case UpdateScreen.routeName:
+            return CupertinoPageRoute(
+                builder: (context) => UpdateScreen(userModel:settings.arguments as UserProfileDetelsModel)
             );
 
 

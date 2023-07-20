@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => UserCubit()),
         BlocProvider(create: (context) => PostCubit()),
         BlocProvider(create: (context) => UserToFollowCubit()),
+        BlocProvider(create: (context) => UserProfileDetelsCubit()),
       
       ],
       

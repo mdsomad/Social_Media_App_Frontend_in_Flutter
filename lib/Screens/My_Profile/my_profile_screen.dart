@@ -32,6 +32,13 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
   UserCubit cubit = UserCubit();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     BlocProvider.of<UserProfileDetelsCubit>(context).initialize();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
@@ -74,7 +81,7 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                     value: 1,
                   child: ListTile(
                     onTap: (){
-                    Navigator.pushNamed(context, SettingsScreen.routeName);
+                    Navigator.pushNamed(context, SettingsScreen.routeName,arguments:state.userProfileDetels);
                     },
                     leading:Icon(Icons.settings,color: Colors.green,) ,
                     title: Text("Settings"),

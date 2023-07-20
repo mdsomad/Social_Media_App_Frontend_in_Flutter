@@ -63,7 +63,7 @@ class ChangePasswordScreen extends StatelessWidget {
                         obscureText: false,
                         validator: (value) {
                           if(value == null || value.trim().isEmpty) {
-                            return "Password is required!";
+                            return "Old Password is required!";
                           }
                           return null;
                         },
@@ -78,7 +78,7 @@ class ChangePasswordScreen extends StatelessWidget {
                         obscureText: false,
                         validator: (value) {
                           if(value == null || value.trim().isEmpty) {
-                            return "Password is required!";
+                            return "New Password is required!";
                           }
                           return null;
                         },
@@ -94,7 +94,7 @@ class ChangePasswordScreen extends StatelessWidget {
                         obscureText: false,
                         validator: (value) {
                           if(value == null || value.trim().isEmpty) {
-                            return "Password is required!";
+                            return "Confirm Password is required!";
                           }
                           
                           return null;

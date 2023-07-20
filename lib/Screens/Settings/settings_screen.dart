@@ -1,13 +1,16 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/update_profile.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Settings/Widgets/change_password_screen.dart';
 
 
 
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+  final UserProfileDetelsModel userModel;
+  const SettingsScreen({super.key,required this.userModel});
 
    static const String routeName = "settingsScreen";
 
@@ -26,7 +29,16 @@ class SettingsScreen extends StatelessWidget {
           },
           leading: Icon(Icons.key),
           title: Text("Change Password"),
-        )
+        ),
+
+        ListTile(
+          onTap: (){
+            log("Clicked Update Profile");
+            Navigator.pushNamed(context, UpdateScreen.routeName,arguments:userModel);
+          },
+          leading: Icon(Icons.edit),
+          title: Text("Update Profile"),
+        ),
       ]),
     );
   }

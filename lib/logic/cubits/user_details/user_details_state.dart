@@ -19,3 +19,23 @@ class UserProfileDetelsErrorState extends UserProfileState  {
   final String message;
   UserProfileDetelsErrorState(this.message);
 }
+
+
+
+
+
+class UserProfileUpdateLoadingState extends UserProfileState {}
+
+
+class UserProfileUpdateLoadedState extends UserProfileState {
+  final String userProfileSusses;
+  UserProfileUpdateLoadedState(this.userProfileSusses);
+}
+
+
+
+
+class UserProfileUpdateErrorState extends UserProfileState  {
+  final String message;
+  UserProfileUpdateErrorState(this.message);
+}

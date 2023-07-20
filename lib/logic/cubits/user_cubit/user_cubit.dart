@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Error_Model.dart';
+import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/User_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Repository/user_repository.dart';
 import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
@@ -112,19 +113,7 @@ final UserRepository _userRepository = UserRepository();
 
 
 
-  // TODO Create updateUser function
-  Future<bool> updateUser(UserModel userModel) async {
-    emit( UserLoadingState() );
-    try {
-      UserModel updatedUser = await _userRepository.updateUser(userModel);
-       _emitLoggedInState(token:userModel.token.toString(),userId:userModel.userId!);
-      return true;
-    }
-    catch(ex) {
-      emit( UserErrorState(ex.toString()) );
-      return false;
-    }
-  }
+
   
   
   

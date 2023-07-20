@@ -13,11 +13,11 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
 final ChangePasswordRepository _changePasswordRepository = ChangePasswordRepository();
 
 
-
-  void ChangePassword({required String OldPassWord,required String NewPassword}) async {
+//TODO: Create ChangePassword functon 
+void ChangePassword({required String OldPassWord,required String NewPassword}) async {
     emit(ChangePasswordLoadingState());
     try {
-      final changePaddword = await _changePasswordRepository.ChangePassword(OldPassword: OldPassWord,NewPassword: OldPassWord);
+      final changePaddword = await _changePasswordRepository.ChangePassword(OldPassword: OldPassWord,NewPassword: NewPassword);
     
       emit(ChangePasswordSuccessfullyState(changePaddword!) );
     }

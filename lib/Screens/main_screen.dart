@@ -29,10 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     ),
     PostScreen(),
     Text(""),
-    BlocProvider(
-      create: (context) => UserProfileDetelsCubit(),
-      child: MyProfilScreen(),
-    )
+    MyProfilScreen()
   ];
 
   @override

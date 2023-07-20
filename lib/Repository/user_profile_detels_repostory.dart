@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
@@ -109,6 +111,38 @@ Future<UserProfileDetelsModel> userToFollow(userId) async {
       rethrow;
     }
 
+  }
+
+
+
+
+
+
+
+
+  // TODO: Create updateUser function
+Future<UserProfileDetelsModel> updateUser(UserProfileDetelsModel userProfileDetelsModel) async {
+    try {
+      Response response = await _apiBearerToken.sendRequest.put(
+        "/update/profile",
+         options: Options(headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer ${SessionControllerTolen().token.toString()}",
+          }),
+        data: jsonEncode(userProfileDetelsModel)
+      );
+
+      UserProfileDetelsApiResponse apiResponse = UserProfileDetelsApiResponse.fromResponse(response);
+
+      if(!apiResponse.success) {
+        throw apiResponse.message.toString();
+      }
+
+      return UserProfileDetelsModel.fromJson(apiResponse.user);
+    }
+    catch(ex) {
+      rethrow;
+    }
   }
 
 

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/User_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/core/api.dart';
 
@@ -80,26 +81,11 @@ Future<UserModel> signIn({
 
 
 
-// TODO: Create updateUser function
-Future<UserModel> updateUser(UserModel userModel) async {
-    try {
-      Response response = await _api.sendRequest.put(
-        "/user",
-        data: jsonEncode(userModel.toJson())
-      );
 
-      ApiResponse apiResponse = ApiResponse.fromResponse(response);
 
-      if(!apiResponse.status) {
-        throw apiResponse.message.toString();
-      }
 
-      return UserModel(token: apiResponse.token,status: apiResponse.status,userId: apiResponse.userId,message: apiResponse.message);
-    }
-    catch(ex) {
-      rethrow;
-    }
-  }
+
+
 
 
 
