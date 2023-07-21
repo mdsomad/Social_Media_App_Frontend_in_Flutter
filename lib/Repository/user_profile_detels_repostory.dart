@@ -121,7 +121,7 @@ Future<UserProfileDetelsModel> userToFollow(userId) async {
 
 
   // TODO: Create updateUser function
-Future<UserProfileDetelsModel> updateUser(UserProfileDetelsModel userProfileDetelsModel) async {
+Future<UserProfileDetelsModel> updateUser(dynamic updateUserDetels) async {
     try {
       Response response = await _apiBearerToken.sendRequest.put(
         "/update/profile",
@@ -129,16 +129,16 @@ Future<UserProfileDetelsModel> updateUser(UserProfileDetelsModel userProfileDete
             "Content-Type": "application/json",
             "Authorization": "Bearer ${SessionControllerTolen().token.toString()}",
           }),
-        data: jsonEncode(userProfileDetelsModel)
+        data: jsonEncode(updateUserDetels)
       );
 
-      UserProfileDetelsApiResponse apiResponse = UserProfileDetelsApiResponse.fromResponse(response);
+      UserProfileDetelsApiResponse userProfileDetelsApiResponse = UserProfileDetelsApiResponse.fromResponse(response);
 
-      if(!apiResponse.success) {
-        throw apiResponse.message.toString();
+      if(!userProfileDetelsApiResponse.success) {
+        throw userProfileDetelsApiResponse.message.toString();
       }
 
-      return UserProfileDetelsModel.fromJson(apiResponse.user);
+      return UserProfileDetelsModel.fromJson(userProfileDetelsApiResponse.user);
     }
     catch(ex) {
       rethrow;

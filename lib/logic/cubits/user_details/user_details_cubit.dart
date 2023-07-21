@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 import 'package:social_media_app_frontend_in_flutter/Repository/user_profile_detels_repostory.dart';
+import 'package:social_media_app_frontend_in_flutter/Utils/utils.dart';
 import 'package:social_media_app_frontend_in_flutter/core/api.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_details_state.dart';
 
@@ -41,16 +43,28 @@ class UserProfileDetelsCubit extends Cubit<UserProfileState> {
 
 
   // TODO Create updateUser function
-  Future<void> updateUser(UserProfileDetelsModel userModel) async {
+  Future<void> updateUser(String email, String name,UserProfileDetelsModel userModel,BuildContext context) async {
+
+    Map<String, dynamic> updateUserDetels = {
+       "email":email,
+       "name":name
+    };
+    
     emit(UserProfileUpdateLoadingState());
     try {
-      UserProfileDetelsModel updatedUser = await _userProfileDetelsRepository.updateUser(userModel);
-      emit(UserProfileDetelsLoadedState(updatedUser));
-      // emit(UserProfileUpdateLoadedState(updatedUser.message.toString()));
+      final updatedUser = await _userProfileDetelsRepository.updateUser(updateUserDetels);
+      // emit(UserProfileDetelsLoadingState());
+      log("Updated user $updatedUser");
+       emit(UserProfileDetelsLoadedState(updatedUser));
+      //  emit(UserProfileUpdateSussesState("User updated!"));
       //  return true;
     }
     catch(ex) {
-      emit(UserProfileDetelsErrorState(ex.toString()) );
+      log("error user $ex");
+      // emit(UserProfileUpdateErrorState(ex.toString()));
+      Utils.ftushBarErrorMessage(ex.toString(),context);
+      // initialize();
+      emit(UserProfileDetelsLoadedState(userModel));
       // return false;
     }
   }

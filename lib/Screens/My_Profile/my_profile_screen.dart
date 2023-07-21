@@ -24,6 +24,8 @@ class MyProfilScreen extends StatefulWidget {
 
   const MyProfilScreen({super.key});
 
+  static const String routeName = "myProfilScreen";
+
   @override
   My_ProfilScreenState createState() => My_ProfilScreenState();
 }

@@ -24,12 +24,19 @@ class UserProfileDetelsErrorState extends UserProfileState  {
 
 
 
+
+
+
+
+
+
+
 class UserProfileUpdateLoadingState extends UserProfileState {}
 
 
-class UserProfileUpdateLoadedState extends UserProfileState {
+class UserProfileUpdateSussesState extends UserProfileState {
   final String userProfileSusses;
-  UserProfileUpdateLoadedState(this.userProfileSusses);
+  UserProfileUpdateSussesState(this.userProfileSusses);
 }
 
 

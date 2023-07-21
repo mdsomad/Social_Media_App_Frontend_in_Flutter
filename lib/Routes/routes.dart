@@ -8,6 +8,8 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Login_Screen.d
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/login_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/signup_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/signup_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/Provider/update_profile_provider.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/my_profile_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/update_profile.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/Provider/post_upload_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Posts/addcaption_screen.dart';
@@ -186,7 +188,16 @@ class Routes {
 
       case UpdateScreen.routeName:
             return CupertinoPageRoute(
-                builder: (context) => UpdateScreen(userModel:settings.arguments as UserProfileDetelsModel)
+                builder: (context) => ChangeNotifierProvider(
+                  create: (context) => UpdateProfileProvider(context),
+                  child: UpdateScreen(userModel:settings.arguments as UserProfileDetelsModel))
+            );
+
+
+
+      case MyProfilScreen.routeName:
+            return CupertinoPageRoute(
+                builder: (context) => MyProfilScreen()
             );
 
 
