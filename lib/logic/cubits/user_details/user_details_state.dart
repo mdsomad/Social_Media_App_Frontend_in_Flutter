@@ -30,15 +30,8 @@ class UserProfileDetelsErrorState extends UserProfileState  {
 
 
 
-
+//TODO: Create User Profile Update State
 class UserProfileUpdateLoadingState extends UserProfileState {}
-
-
-class UserProfileUpdateSussesState extends UserProfileState {
-  final String userProfileSusses;
-  UserProfileUpdateSussesState(this.userProfileSusses);
-}
-
 
 
 

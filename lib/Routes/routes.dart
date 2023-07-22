@@ -8,6 +8,7 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Login_Screen.d
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/login_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Provider/signup_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/signup_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Comments/Provider/comment_post_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/Provider/update_profile_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/my_profile_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/My_Profile/update_profile.dart';
@@ -38,11 +39,19 @@ import '../Screens/user_posts/Provider/post_edit_caption_provider.dart';
 class Routes {
   static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+
+
+
       case LoginScreen.routeName:
         return CupertinoPageRoute(
             builder: (context) => ChangeNotifierProvider(
                 create: (context) => LoginProvider(context),
                 child: const LoginScreen()));
+
+
+
+
+
 
       case SignupScreen.routeName:
         return CupertinoPageRoute(
@@ -50,14 +59,32 @@ class Routes {
                 create: (context) => SignupProvider(context),
                 child: const SignupScreen()));
 
+
+
+
+
       case SplashScreen.routeName:
         return CupertinoPageRoute(builder: (context) => const SplashScreen());
+
+
+
+
 
       case HomeScreen.routeName:
         return CupertinoPageRoute(builder: (context) => HomeScreen());
 
+
+
+
+
+
       case MainScreen.routeName:
         return CupertinoPageRoute(builder: (context) => MainScreen());
+
+
+
+
+
 
       case CommentScreen.routeName:
         return CupertinoPageRoute(
@@ -65,8 +92,11 @@ class Routes {
             builder: (context) => BlocProvider(
                 create: (context) =>
                     CommentsCubit(settings.arguments as PostModel),
-                child: CommentScreen(
-                  post: settings.arguments as PostModel,
+                child: ChangeNotifierProvider(
+                  create: (context) => CommentPostProvider(context),
+                  child: CommentScreen(
+                    post: settings.arguments as PostModel,
+                  ),
                 )));
 
 

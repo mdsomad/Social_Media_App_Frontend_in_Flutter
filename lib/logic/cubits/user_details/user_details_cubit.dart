@@ -43,7 +43,7 @@ class UserProfileDetelsCubit extends Cubit<UserProfileState> {
 
 
   // TODO Create updateUser function
-  Future<void> updateUser(String email, String name,UserProfileDetelsModel userModel,BuildContext context) async {
+  Future<bool> updateUser(String email, String name,UserProfileDetelsModel userModel,BuildContext context) async {
 
     Map<String, dynamic> updateUserDetels = {
        "email":email,
@@ -53,19 +53,16 @@ class UserProfileDetelsCubit extends Cubit<UserProfileState> {
     emit(UserProfileUpdateLoadingState());
     try {
       final updatedUser = await _userProfileDetelsRepository.updateUser(updateUserDetels);
-      // emit(UserProfileDetelsLoadingState());
       log("Updated user $updatedUser");
-       emit(UserProfileDetelsLoadedState(updatedUser));
-      //  emit(UserProfileUpdateSussesState("User updated!"));
-      //  return true;
+        emit(UserProfileDetelsLoadedState(updatedUser));
+        Utils.ftushBarSussessMessage("User updated!",context);
+        return false;
     }
     catch(ex) {
       log("error user $ex");
-      // emit(UserProfileUpdateErrorState(ex.toString()));
-      Utils.ftushBarErrorMessage(ex.toString(),context);
-      // initialize();
+      emit(UserProfileUpdateErrorState(ex.toString()));
       emit(UserProfileDetelsLoadedState(userModel));
-      // return false;
+       return false;
     }
   }
 

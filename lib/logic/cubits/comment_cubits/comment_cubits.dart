@@ -30,7 +30,7 @@ class CommentsCubit extends Cubit<CommentsState> {
 
   
   void comment(commentData) async {
-    // emit(CommentsLoadingState(state.comments) );
+     emit(CommentPostLoadingState(state.comments) );
     try {
       final comment = await _commentsRepository.comment(commentData,post);
       Loggerclass.logger.i(comment);
@@ -38,7 +38,7 @@ class CommentsCubit extends Cubit<CommentsState> {
     }
     catch(ex) {
       Loggerclass.logger.e(ex);
-      emit(CommentsErrorState(ex.toString(), state.comments) );
+      emit(CommentPostErrorState(ex.toString(), state.comments) );
     }
   }
 

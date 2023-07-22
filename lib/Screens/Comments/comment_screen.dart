@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/Comments/Provider/comment_post_provider.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Users_Profiles/users_profiles.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/formatter.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
@@ -11,6 +13,7 @@ import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_state.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_details_cubit.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_details_state.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class CommentScreen extends StatefulWidget {
   final PostModel post;
@@ -84,10 +87,16 @@ class _CommentScreenState extends State<CommentScreen> {
                                       size: 16,
                                     )
                                   : const SizedBox(),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(timeago.format(data.comments[i].commentdate!), style: TextStyle(fontSize: 11)),
+                            
                             ],
                           ),
                         ),
                         subtitle: Text(data.comments[i].comment!),
+                            // Text(timeago.format(data.comments[i].commentdate!), style: TextStyle(color: Colors.white38)),
                         trailing: PopupMenuButton(
                             icon: Icon(Icons.more_vert),
                             itemBuilder: (context) => [
@@ -165,8 +174,20 @@ class _CommentScreenState extends State<CommentScreen> {
           ));
   }
 
+
+
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    final provider = Provider.of<CommentPostProvider>(context);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Comment Screen"),
@@ -225,7 +246,7 @@ class _CommentScreenState extends State<CommentScreen> {
                   focusNode: commentFocusnode,
                   backgroundColor: Colors.pink,
                   textColor: Colors.white,
-                  sendWidget:
+                  sendWidget: provider.isLoading ? CircularProgressIndicator(color: Colors.green):
                       Icon(Icons.send_sharp, size: 30, color: Colors.white),
                 );
             }
@@ -268,7 +289,7 @@ class _CommentScreenState extends State<CommentScreen> {
                   focusNode: commentFocusnode,
                   backgroundColor: Colors.pink,
                   textColor: Colors.white,
-                  sendWidget:
+                  sendWidget:provider.isLoading ? CircularProgressIndicator(color: Colors.green):
                       Icon(Icons.send_sharp, size: 30, color: Colors.white),
                 );
             }
@@ -312,7 +333,7 @@ class _CommentScreenState extends State<CommentScreen> {
                   focusNode: commentFocusnode,
                   backgroundColor: Colors.pink,
                   textColor: Colors.white,
-                  sendWidget:
+                  sendWidget:provider.isLoading ? CircularProgressIndicator(color: Colors.green):
                       Icon(Icons.send_sharp, size: 30, color: Colors.white),
                 );
                 }

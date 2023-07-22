@@ -27,21 +27,16 @@ class UpdateProfileProvider with ChangeNotifier {
   void _listenToPostCubit() {
 
     _userSubscription = BlocProvider.of<UserProfileDetelsCubit>(context).stream.listen((userProfileDetelsCubit) {
-      if(userProfileDetelsCubit is UserProfileDetelsLoadingState) {
+      if(userProfileDetelsCubit is UserProfileUpdateLoadingState) {
         isLoading = true;
         error = "";
         notifyListeners();
-      }else if(userProfileDetelsCubit is UserProfileUpdateSussesState){
-         isLoading = false;
-         log(userProfileDetelsCubit.userProfileSusses);
-         Utils.ftushBarSussessMessage(userProfileDetelsCubit.userProfileSusses,context);
-         notifyListeners();
       }
       else if(userProfileDetelsCubit is UserProfileUpdateErrorState) {
         isLoading = false;
         error = userProfileDetelsCubit.message;
         log('UserProfileUpdateErrorState ${userProfileDetelsCubit.message}');
-        // Utils.ftushBarErrorMessage(error,context);
+        Utils.ftushBarErrorMessage(error,context);
         notifyListeners();
       }
       else {

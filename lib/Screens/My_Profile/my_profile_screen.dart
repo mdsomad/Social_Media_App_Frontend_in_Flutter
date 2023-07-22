@@ -68,13 +68,8 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                     margin: EdgeInsets.only(top: 35),
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        GestureDetector(
-                            onTap: () {
-                              // Navigator.of(context).pop();
-                            },
-                            child: Icon(Icons.arrow_back_ios)),
                         PopupMenuButton(
                   icon: Icon(Icons.more_vert),
                   itemBuilder: (context)=>[

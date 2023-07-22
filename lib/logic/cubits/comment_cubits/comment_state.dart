@@ -21,3 +21,26 @@ class CommentsErrorState extends CommentsState {
   final String message;
   CommentsErrorState(this.message, super.comments);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TODO: User Comment Post State
+class CommentPostLoadingState extends CommentsState {
+  CommentPostLoadingState(super.comments);
+}
+
+
+class CommentPostErrorState extends CommentsState {
+  final String message;
+  CommentPostErrorState(this.message, super.comments);
+}
