@@ -79,10 +79,10 @@ class UserProfileDetelsCubit extends Cubit<UserProfileState> {
 
 // TODO Create UpdateProfileImage function
 void UpdateProfileImage({required File file}) async {
-    // emit(PostUploadLoadingState(state.post));
+    emit(UserProfileImageUpdateLoadingState());
     try {
 
-      UserProfileDetelsModel updatedUser = await _userProfileDetelsRepository.PostUpload(file,caption);
+      UserProfileDetelsModel updatedUser = await _userProfileDetelsRepository.UpdateProfileImage(file);
 
       
       emit(UserProfileDetelsLoadedState(updatedUser));
@@ -90,7 +90,7 @@ void UpdateProfileImage({required File file}) async {
 
     } catch(ex) {
       Loggerclass.logger.e(ex.toString());
-      // emit(PostUploadErrorState(ex.toString(), state.post) );
+      emit(UserProfileImageUpdateErrorState(ex.toString()));
     }
   }
 

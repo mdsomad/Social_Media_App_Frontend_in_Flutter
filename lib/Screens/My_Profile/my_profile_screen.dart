@@ -25,8 +25,6 @@ import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/u
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_details_state.dart';
 
 class MyProfilScreen extends StatefulWidget {
-  
-
   const MyProfilScreen({super.key});
 
   static const String routeName = "myProfilScreen";
@@ -36,31 +34,26 @@ class MyProfilScreen extends StatefulWidget {
 }
 
 class My_ProfilScreenState extends State<MyProfilScreen> {
-  
-
 //TODO: Create videoPick Function
- imagePick(ImageSource src ,BuildContext context) async {
-  final _pickedImage  = await ImagePicker().pickImage(source: src);     
-  if (_pickedImage  != null) {
-       log("Image picked");
-     
-    
-  } else {
-   Loggerclass.logger.e("Error In Selecting Video Please Choose A Different Video File");
-    Utils.ftushBarErrorMessage("Error In Selecting Video Please Choose A Different Video File", context);
+  imagePick(ImageSource src, BuildContext context) async {
+    final _pickedImage = await ImagePicker().pickImage(source: src);
+    if (_pickedImage != null) {
+      log("Image picked");
 
+      BlocProvider.of<UserProfileDetelsCubit>(context).UpdateProfileImage(file:File(_pickedImage.path));
+    } else {
+      Loggerclass.logger.e("Error In Selecting Video Please Choose A Different Video File");
+      Utils.ftushBarErrorMessage(
+          "Error In Selecting Video Please Choose A Different Video File",
+          context);
+    }
   }
-}
-
-
-
-  
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-     BlocProvider.of<UserProfileDetelsCubit>(context).initialize();
+    BlocProvider.of<UserProfileDetelsCubit>(context).initialize();
   }
 
   @override
@@ -94,73 +87,83 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         PopupMenuButton(
-                  icon: Icon(Icons.more_vert),
-                  itemBuilder: (context)=>[
+                            icon: Icon(Icons.more_vert),
+                            itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                      value: 1,
+                                      child: ListTile(
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                              context, SettingsScreen.routeName,
+                                              arguments:
+                                                  state.userProfileDetels);
+                                        },
+                                        leading: Icon(
+                                          Icons.settings,
+                                          color: Colors.green,
+                                        ),
+                                        title: Text("Settings"),
+                                      )),
+                                  PopupMenuItem(
+                                      value: 2,
+                                      child: ListTile(
+                                        leading: Icon(
+                                          Icons.logout,
+                                          color: Colors.red,
+                                        ),
+                                        title: Text("Logout"),
+                                      )
 
-                  PopupMenuItem(
-                    value: 1,
-                  child: ListTile(
-                    onTap: (){
-                    Navigator.pushNamed(context, SettingsScreen.routeName,arguments:state.userProfileDetels);
-                    },
-                    leading:Icon(Icons.settings,color: Colors.green,) ,
-                    title: Text("Settings"),
-                  )
-                  ),
-                  PopupMenuItem(
-                  value: 2,
-                  child: ListTile(
-                    leading:Icon(Icons.logout,color: Colors.red,) ,
-                    title: Text("Logout"),
-                  )
-                  
-                  
-                  //  IconButton(onPressed: (){
-                  //      cubit.signOut().then((value) {
-                  //               Navigator.pushReplacementNamed(
-                  //                   context, LoginScreen.routeName);
-                  //             });
-                  //     Navigator.pop(context);
-                  // }, icon: Icon(Icons.logout,color: Colors.red,))
-                  ),
-
-                    
-                    
-
-                 
-                    
-                  ])
-
+                                      //  IconButton(onPressed: (){
+                                      //      cubit.signOut().then((value) {
+                                      //               Navigator.pushReplacementNamed(
+                                      //                   context, LoginScreen.routeName);
+                                      //             });
+                                      //     Navigator.pop(context);
+                                      // }, icon: Icon(Icons.logout,color: Colors.red,))
+                                      ),
+                                ])
                       ],
                     ),
                   ),
                   GestureDetector(
-                    onLongPress: (){
+                    onLongPress: () {
                       BottomSheet(context);
                     },
                     child: Hero(
                       tag: 'hello',
-                      child: Container(
-                        margin: EdgeInsets.only(top: 35),
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(40),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              spreadRadius: 5,
-                              blurRadius: 20,
-                            )
-                          ],
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                state.userProfileDetels.avater!.url != "" ? state.userProfileDetels.avater!.url! :
-                                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"
-                                ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 35),
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  spreadRadius: 5,
+                                  blurRadius: 20,
+                                )
+                              ],
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(state
+                                            .userProfileDetels.avater!.url !=
+                                        ""
+                                    ? state.userProfileDetels.avater!.url!
+                                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"),
+                              ),
+                            ),
                           ),
-                        ),
+                        //  Positioned(
+                        //           top: 58,
+                        //           left: 25,
+                        //           child: CircularProgressIndicator(
+                        //             color: Colors.yellow,
+                        //           ))
+                        ],
                       ),
                     ),
                   ),
@@ -268,7 +271,8 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                       return InkWell(
                           onTap: () {
                             Navigator.pushNamed(
-                                context, UserPostScreen.routeName,arguments:{"sId":SessionController().userid});
+                                context, UserPostScreen.routeName,
+                                arguments: {"sId": SessionController().userid});
                             log(index.toString());
                           },
                           child: buildPictureCard(
@@ -281,15 +285,6 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
       ],
     ));
   }
-
-
-
-
-
-
-
-
-
 
   // TODO Create buildPictureCard Function
   Card buildPictureCard(String url) {
@@ -306,13 +301,6 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
       ),
     );
   }
-
-
-
-
-
-
-
 
   // TODO Create buildStatColumn Function
   Column buildStatColumn(String value, String title) {
@@ -337,14 +325,9 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
     );
   }
 
-
-
-
-
-
-
-BottomSheet(BuildContext context) {  //* <-- showModalBottomSheet 2 Method
-   return showModalBottomSheet(
+  BottomSheet(BuildContext context) {
+    //* <-- showModalBottomSheet 2 Method
+    return showModalBottomSheet(
         context: context,
         backgroundColor: Colors.transparent,
         builder: ((context) => Container(
@@ -357,61 +340,58 @@ BottomSheet(BuildContext context) {  //* <-- showModalBottomSheet 2 Method
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 child: SingleChildScrollView(
                   child: Column(
-                    
                     children: [
                       Container(
                         height: 5,
                         width: 50,
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15)
-                        ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15)),
                       ),
-                      SizedBox(height: 20,),
-                      Text("Update Profile Image",style: TextStyle(fontWeight: FontWeight.bold),),
-                      SizedBox(height: 20,),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Update Profile Image",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
                       ListTile(
-                        onTap: (){
+                        onTap: () {
                           log("Click Edit Caption");
-                          imagePick(ImageSource.camera,context);
-                          Navigator.pop(context);                 
-                         
+                          imagePick(ImageSource.camera, context);
+                          Navigator.pop(context);
                         },
-                        leading: Icon(Icons.camera,color: Colors.white,),
-                        title:Text("Camrea"),
+                        leading: Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
+                        title: Text("Camrea"),
                       ),
                       Divider(),
-                
                       ListTile(
-                        onTap: (){
+                        onTap: () {
                           log("Click Edit Caption");
                           //  Navigator.pushNamed(context, PostDeleteScreen.routeName,arguments:postData);
-                           imagePick(ImageSource.gallery,context);
-                          Navigator.pop(context);                 
-
+                          imagePick(ImageSource.gallery, context);
+                          // Navigator.pop(context);
                         },
-                        leading: Icon(Icons.photo,color: Colors.white,),
-                        title:Text("Gallery"),
-                        
+                        leading: Icon(
+                          Icons.photo,
+                          color: Colors.white,
+                        ),
+                        title: Text("Gallery"),
                       )
-                     
-                      
                     ],
                   ),
                 ),
               ),
             )));
   }
-
-
-
-
-
-
-
-
-
 }

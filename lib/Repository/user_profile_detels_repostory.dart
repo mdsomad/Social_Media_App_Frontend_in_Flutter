@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
@@ -150,6 +151,55 @@ Future<UserProfileDetelsModel> updateUser(dynamic updateUserDetels) async {
       rethrow;
     }
   }
+
+
+
+
+
+
+
+
+//TODO: Create UpdateProfileImage function 
+Future<UserProfileDetelsModel> UpdateProfileImage(File file) async {
+
+  try {
+
+   String fileName = file.path.split('/').last;
+
+    FormData formData = FormData.fromMap({
+        "avater": await MultipartFile.fromFile(file.path,filename: fileName,),
+        
+    });
+   
+    Response response = await _apiBearerToken.sendRequest.put("/update/avater?avater",
+    data: formData,
+    options: Options(headers: {
+             "Content-Type": "application/json",
+            "Authorization": "Bearer ${SessionControllerTolen().token.toString()}",
+          })
+    );
+   
+   log(response.statusCode.toString());
+
+   UserProfileDetelsApiResponse apiResponseProfileUpdate = UserProfileDetelsApiResponse.fromResponse(response);
+
+      if(!apiResponseProfileUpdate.success) {
+          throw apiResponseProfileUpdate.message.toString();
+      }
+
+      return UserProfileDetelsModel.fromJson(apiResponseProfileUpdate.user);
+
+    } catch (ex) {
+      Loggerclass.logger.e(ex);
+      rethrow;
+    }
+
+  }
+
+
+
+
+
 
 
 
