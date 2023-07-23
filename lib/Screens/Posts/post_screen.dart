@@ -19,8 +19,8 @@ class PostScreen extends StatelessWidget {
  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 
-//TODO: Create videoPick Function
- videoPick(ImageSource src ,BuildContext context) async {
+//TODO: Create imagePick Function
+ imagePick(ImageSource src ,BuildContext context) async {
   final _pickedImage  = await ImagePicker().pickImage(source: src);     
   if (_pickedImage  != null) {
        log("Image picked");
@@ -59,7 +59,7 @@ showDialogOpt(BuildContext context) {
                     onTap: (){
                       
                         log("Click Camera");
-                        videoPick(ImageSource.camera,context); //* <-- This videoPick function Call
+                        imagePick(ImageSource.camera,context); //* <-- This imagePick function Call
 
                         //  Timer(const Duration(milliseconds: 100), () {
                         //     Navigator.of(context).pop();
@@ -80,7 +80,7 @@ showDialogOpt(BuildContext context) {
                     onTap: (){
                       //  Navigator.pop(context);
                       log("Click Gallery");
-                      videoPick(ImageSource.gallery,context);  //* <-- This videoPick Function Call
+                      imagePick(ImageSource.gallery,context);  //* <-- This imagePick Function Call
                          
                           // Navigator.pop(context, true);
                       //  Timer(const Duration(seconds:3), () {

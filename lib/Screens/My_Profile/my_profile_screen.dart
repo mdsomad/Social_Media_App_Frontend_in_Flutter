@@ -1,16 +1,21 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Post_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
+import 'package:social_media_app_frontend_in_flutter/Resources/Colors/app_colors.dart';
+import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Login_Screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Settings/settings_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/followers_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/following_Screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/user_posts_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
+import 'package:social_media_app_frontend_in_flutter/Utils/utils.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/followers_following_cubits/followers_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/post_cubit/post_cubit.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/post_cubit/post_state.dart';
@@ -31,7 +36,25 @@ class MyProfilScreen extends StatefulWidget {
 }
 
 class My_ProfilScreenState extends State<MyProfilScreen> {
-  UserCubit cubit = UserCubit();
+  
+
+//TODO: Create videoPick Function
+ imagePick(ImageSource src ,BuildContext context) async {
+  final _pickedImage  = await ImagePicker().pickImage(source: src);     
+  if (_pickedImage  != null) {
+       log("Image picked");
+     
+    
+  } else {
+   Loggerclass.logger.e("Error In Selecting Video Please Choose A Different Video File");
+    Utils.ftushBarErrorMessage("Error In Selecting Video Please Choose A Different Video File", context);
+
+  }
+}
+
+
+
+  
 
   @override
   void initState() {
@@ -111,25 +134,32 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                       ],
                     ),
                   ),
-                  Hero(
-                    tag: 'hello',
-                    child: Container(
-                      margin: EdgeInsets.only(top: 35),
-                      height: 80,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            spreadRadius: 5,
-                            blurRadius: 20,
-                          )
-                        ],
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              state.userProfileDetels.avater!.url!),
+                  GestureDetector(
+                    onLongPress: (){
+                      BottomSheet(context);
+                    },
+                    child: Hero(
+                      tag: 'hello',
+                      child: Container(
+                        margin: EdgeInsets.only(top: 35),
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              spreadRadius: 5,
+                              blurRadius: 20,
+                            )
+                          ],
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                state.userProfileDetels.avater!.url != "" ? state.userProfileDetels.avater!.url! :
+                                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"
+                                ),
+                          ),
                         ),
                       ),
                     ),
@@ -306,4 +336,82 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
       ],
     );
   }
+
+
+
+
+
+
+
+BottomSheet(BuildContext context) {  //* <-- showModalBottomSheet 2 Method
+   return showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: ((context) => Container(
+              height: MediaQuery.of(context).size.height * 0.25,
+              decoration: BoxDecoration(
+                color: AppColor.bodyColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                child: SingleChildScrollView(
+                  child: Column(
+                    
+                    children: [
+                      Container(
+                        height: 5,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15)
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      Text("Update Profile Image",style: TextStyle(fontWeight: FontWeight.bold),),
+                      SizedBox(height: 20,),
+                      ListTile(
+                        onTap: (){
+                          log("Click Edit Caption");
+                          imagePick(ImageSource.camera,context);
+                          Navigator.pop(context);                 
+                         
+                        },
+                        leading: Icon(Icons.camera,color: Colors.white,),
+                        title:Text("Camrea"),
+                      ),
+                      Divider(),
+                
+                      ListTile(
+                        onTap: (){
+                          log("Click Edit Caption");
+                          //  Navigator.pushNamed(context, PostDeleteScreen.routeName,arguments:postData);
+                           imagePick(ImageSource.gallery,context);
+                          Navigator.pop(context);                 
+
+                        },
+                        leading: Icon(Icons.photo,color: Colors.white,),
+                        title:Text("Gallery"),
+                        
+                      )
+                     
+                      
+                    ],
+                  ),
+                ),
+              ),
+            )));
+  }
+
+
+
+
+
+
+
+
+
 }

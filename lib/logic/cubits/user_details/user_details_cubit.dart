@@ -1,9 +1,11 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 import 'package:social_media_app_frontend_in_flutter/Repository/user_profile_detels_repostory.dart';
+import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
 import 'package:social_media_app_frontend_in_flutter/Utils/utils.dart';
 import 'package:social_media_app_frontend_in_flutter/core/api.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_details/user_details_state.dart';
@@ -65,6 +67,45 @@ class UserProfileDetelsCubit extends Cubit<UserProfileState> {
        return false;
     }
   }
+
+
+
+
+
+
+
+
+
+
+// TODO Create UpdateProfileImage function
+void UpdateProfileImage({required File file}) async {
+    // emit(PostUploadLoadingState(state.post));
+    try {
+
+      UserProfileDetelsModel updatedUser = await _userProfileDetelsRepository.PostUpload(file,caption);
+
+      
+      emit(UserProfileDetelsLoadedState(updatedUser));
+
+
+    } catch(ex) {
+      Loggerclass.logger.e(ex.toString());
+      // emit(PostUploadErrorState(ex.toString(), state.post) );
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
 

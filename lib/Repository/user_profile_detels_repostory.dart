@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
@@ -82,6 +83,10 @@ Future<UserProfileDetelsModel> fetchUserById(userId) async {
 
 
 
+
+
+
+
 //TODO: Create fetchProductsByCategory function 
 Future<UserProfileDetelsModel> userToFollow(userId) async {
 
@@ -120,7 +125,7 @@ Future<UserProfileDetelsModel> userToFollow(userId) async {
 
 
 
-  // TODO: Create updateUser function
+// TODO: Create updateUser function
 Future<UserProfileDetelsModel> updateUser(dynamic updateUserDetels) async {
     try {
       Response response = await _apiBearerToken.sendRequest.put(
@@ -131,7 +136,8 @@ Future<UserProfileDetelsModel> updateUser(dynamic updateUserDetels) async {
           }),
         data: jsonEncode(updateUserDetels)
       );
-
+    
+      
       UserProfileDetelsApiResponse userProfileDetelsApiResponse = UserProfileDetelsApiResponse.fromResponse(response);
 
       if(!userProfileDetelsApiResponse.success) {
