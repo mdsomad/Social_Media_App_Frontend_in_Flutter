@@ -35,14 +35,18 @@ class UsersProfiles extends StatelessWidget {
         BlocBuilder<UserGetByIdCubit, UserProfileState>(
           builder: (context, state) {
             if (state is UserProfileDetelsLoadingState) {
-              return Center(
-                child: CircularProgressIndicator(),
+              return Expanded(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
             }
 
             if (state is UserProfileDetelsErrorState) {
-              return Center(
-                child: Text(state.message),
+              return Expanded(
+                child: Center(
+                  child: Text(state.message),
+                ),
               );
             }
 

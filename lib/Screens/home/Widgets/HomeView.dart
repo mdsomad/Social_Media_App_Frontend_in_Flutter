@@ -23,8 +23,6 @@ class HomeView extends StatelessWidget {
   List<PostModel> allPosts;
   HomeView({super.key,required this.allPosts,required this.isUserPosts});
 
-
-
   var storyData = [
     {
       'imageUrl':
@@ -52,9 +50,6 @@ class HomeView extends StatelessWidget {
       'userName': 'user5',
     },
   ];
-
-
-
 
   var postData = [
     {
@@ -102,17 +97,11 @@ class HomeView extends StatelessWidget {
     },
   ];
 
-
-
-
   var likeImagesList = [
     'https://img.freepik.com/free-photo/girl-with-backpack-sunset-generative-al_169016-28612.jpg?size=338&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
     'https://img.freepik.com/free-photo/girl-with-backpack-sunset-generative-al_169016-28612.jpg?size=338&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
     'https://img.freepik.com/premium-vector/character-design-girl-bring-stick_286658-173.jpg?size=626&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
   ];
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -193,14 +182,6 @@ class HomeView extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-
 //TODO: Create PostCard Widget
 class PostCard extends StatelessWidget {
   const PostCard({
@@ -211,7 +192,8 @@ class PostCard extends StatelessWidget {
 
   final List<PostModel> likeImagesList;
   final PostModel postData;
-  
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -359,10 +341,6 @@ class PostCard extends StatelessWidget {
     
   }
 
-
-
-
-
   BottomSheet(BuildContext context) {  //* <-- showModalBottomSheet 2 Method
    return showModalBottomSheet(
         context: context,
@@ -393,12 +371,8 @@ class PostCard extends StatelessWidget {
                     ListTile(
                       onTap: (){
                         log("Click Edit Caption");
-                        
                         Navigator.pushNamed(context, PostEditCaptionScreen.routeName,arguments:postData);
-
-                      
-                                            
-                       
+                        // Navigator.of(context).pop();
                       },
                       leading: Icon(Icons.edit,color: Colors.green,),
                       title:Text("Edit Caption"),
@@ -407,7 +381,7 @@ class PostCard extends StatelessWidget {
 
                     ListTile(
                       onTap: (){
-                        log("Click Edit Caption");
+                         log("Click Edit Caption");
                          Navigator.pushNamed(context, PostDeleteScreen.routeName,arguments:postData);
                       },
                       leading: Icon(Icons.delete,color: Colors.red,),
@@ -420,27 +394,9 @@ class PostCard extends StatelessWidget {
               ),
             )));
   }
-  
-  
-  
-  
+
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //TODO: Create LikesImages Widget
 class LikesImages extends StatelessWidget {

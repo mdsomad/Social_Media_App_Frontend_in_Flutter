@@ -44,15 +44,3 @@ class UserProfileUpdateErrorState extends UserProfileState  {
 
 
 
-
-
-
-//TODO: Create User Profile Update State
-class UserProfileImageUpdateLoadingState extends UserProfileState {}
-
-
-
-class UserProfileImageUpdateErrorState extends UserProfileState  {
-  final String message;
-  UserProfileImageUpdateErrorState(this.message);
-}

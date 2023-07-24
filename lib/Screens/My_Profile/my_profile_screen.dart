@@ -34,20 +34,29 @@ class MyProfilScreen extends StatefulWidget {
 }
 
 class My_ProfilScreenState extends State<MyProfilScreen> {
+
+
 //TODO: Create videoPick Function
-  imagePick(ImageSource src, BuildContext context) async {
+  Future<bool?> imagePick(ImageSource src, BuildContext context) async {
     final _pickedImage = await ImagePicker().pickImage(source: src);
     if (_pickedImage != null) {
       log("Image picked");
 
-      BlocProvider.of<UserProfileDetelsCubit>(context).UpdateProfileImage(file:File(_pickedImage.path));
+      updateProfileImage(File(_pickedImage.path));
+      return true;
     } else {
       Loggerclass.logger.e("Error In Selecting Video Please Choose A Different Video File");
-      Utils.ftushBarErrorMessage(
-          "Error In Selecting Video Please Choose A Different Video File",
-          context);
+      Utils.ftushBarErrorMessage("Error In Selecting Video Please Choose A Different Video File",context);
+      return false;
     }
   }
+
+
+updateProfileImage(File file){
+    BlocProvider.of<UserProfileDetelsCubit>(context).UpdateProfileImage(file:file);
+}
+
+  
 
   @override
   void initState() {
@@ -59,24 +68,28 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+      body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         BlocBuilder<UserProfileDetelsCubit, UserProfileState>(
           builder: (context, state) {
             if (state is UserProfileDetelsLoadingState) {
-              return Center(
-                child: CircularProgressIndicator(),
+              return Expanded(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
             }
-
+          
             if (state is UserProfileDetelsErrorState) {
-              return Center(
-                child: Text(state.message),
+              return Expanded(
+                child: Center(
+                  child: Text(state.message),
+                ),
               );
             }
-
+          
             if (state is UserProfileDetelsLoadedState) {
               return Column(
                 children: [
@@ -113,7 +126,7 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                                         ),
                                         title: Text("Logout"),
                                       )
-
+          
                                       //  IconButton(onPressed: (){
                                       //      cubit.signOut().then((value) {
                                       //               Navigator.pushReplacementNamed(
@@ -149,9 +162,7 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                               ],
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(state
-                                            .userProfileDetels.avater!.url !=
-                                        ""
+                                image: NetworkImage(state.userProfileDetels.avater!.url != ""
                                     ? state.userProfileDetels.avater!.url!
                                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"),
                               ),
@@ -239,7 +250,7 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                 ],
               );
             }
-
+          
             return Text("No Data");
           },
         ),
@@ -250,7 +261,7 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                     element.owner!.sId.toString() ==
                     SessionController().userid))
                 .toList();
-
+          
             return Expanded(
               child: Container(
                 margin: EdgeInsets.only(left: 8, right: 8, top: 8),
@@ -283,8 +294,14 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
           },
         )
       ],
-    ));
+        ));
   }
+
+
+
+
+
+
 
   // TODO Create buildPictureCard Function
   Card buildPictureCard(String url) {
@@ -301,6 +318,12 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
       ),
     );
   }
+
+
+
+
+
+
 
   // TODO Create buildStatColumn Function
   Column buildStatColumn(String value, String title) {
@@ -325,7 +348,17 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
     );
   }
 
-  BottomSheet(BuildContext context) {
+
+
+
+
+
+
+
+
+
+//TODO Create BottomSheet Function
+BottomSheet(BuildContext context) {
     //* <-- showModalBottomSheet 2 Method
     return showModalBottomSheet(
         context: context,
@@ -365,8 +398,13 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                       ListTile(
                         onTap: () {
                           log("Click Edit Caption");
-                          imagePick(ImageSource.camera, context);
-                          Navigator.pop(context);
+                          imagePick(ImageSource.camera, context).then((value){
+                            if(value== true) {
+                              //  Navigator.pop(context);
+                               Navigator.of(context).pop();
+                            }
+                          });
+                         
                         },
                         leading: Icon(
                           Icons.camera,
@@ -380,7 +418,7 @@ class My_ProfilScreenState extends State<MyProfilScreen> {
                           log("Click Edit Caption");
                           //  Navigator.pushNamed(context, PostDeleteScreen.routeName,arguments:postData);
                           imagePick(ImageSource.gallery, context);
-                          // Navigator.pop(context);
+                          Navigator.pop(context);
                         },
                         leading: Icon(
                           Icons.photo,
