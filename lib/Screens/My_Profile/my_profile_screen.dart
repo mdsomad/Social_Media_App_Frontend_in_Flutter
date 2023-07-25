@@ -120,6 +120,12 @@ updateProfileImage(File file){
                                   PopupMenuItem(
                                       value: 2,
                                       child: ListTile(
+                                        onTap: (){
+                                          BlocProvider.of<UserCubit>(context).signOut().then((value) {
+                                                    Navigator.pushReplacementNamed(
+                                                      context, LoginScreen.routeName);
+                                                  });
+                                        },
                                         leading: Icon(
                                           Icons.logout,
                                           color: Colors.red,
