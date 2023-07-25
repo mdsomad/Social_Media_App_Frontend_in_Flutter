@@ -55,7 +55,7 @@
    <th> Check User Profile Screen View</th>
    <th> User Profile Screen View</th>
    <th> LoggedIn User Profile Screen View</th>
-   <th> Update Profile Image Screen View</th>
+   <th> Update Profile Image BottomSheet View</th>
 </tr>  
   
   
