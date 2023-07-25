@@ -183,6 +183,7 @@
 <tr>                    
    
    <th> Following Screen View</th>
+   <th> User Profile PopupMenuButton View</th>
    <th> Search User Screen View</th>
 </tr>  
   
@@ -195,15 +196,17 @@
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e90d0c72-c135-475e-b3ea-c80448ea211b" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/495d51de-2c7c-45b2-bd9f-01ccf886a12a" alt="Download Screen View Example" width="260"/>
 </td>
 
-
-
+<td>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e90d0c72-c135-475e-b3ea-c80448ea211b" alt="Download Screen View Example" width="260"/>
+</td>
 
 
   
 </tr>
 
 </table>
+
 
