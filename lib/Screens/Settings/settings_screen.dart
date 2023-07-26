@@ -39,6 +39,14 @@ class SettingsScreen extends StatelessWidget {
           leading: Icon(Icons.edit),
           title: Text("Update Profile"),
         ),
+        ListTile(
+          onTap: (){
+            log("Clicked Delete Account");
+            // Navigator.pushNamed(context, UpdateScreen.routeName,arguments:userModel);
+          },
+          leading: Icon(Icons.person,color: Colors.red,),
+          title: Text("Delete Account "),
+        ),
       ]),
     );
   }
