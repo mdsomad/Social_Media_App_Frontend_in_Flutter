@@ -4,6 +4,47 @@
 
 ## Social Media App Ui Preview
 
+
+<table>
+  
+  
+<tr>                    
+   <th> Login Screen View</th>
+   <th> SignUp Screen View</th>
+   <th> Home Screen View</th>
+   <th> Home Screen View</th>
+</tr>  
+  
+  
+  
+<tr>
+
+<td>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/c1ddc6ce-2835-458c-8f15-101258f63bbf" width="260"/>
+</td>
+
+<td>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/5fa16334-9910-46ea-9c74-d8682390064e" width="260"/>
+</td>
+
+<td>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/cb0e64a9-9279-453f-b4d2-5969b088d068" width="260"/>
+</td>
+<td>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/404f0ec4-19ae-4b1a-9c07-a429e933fd42" width="260"/>
+</td>
+
+ 
+  
+</tr>
+
+
+</table>
+
+
+
+
+
 <table>
   
   
@@ -19,7 +60,7 @@
 <tr>
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/f75dc2e7-30fa-4a05-890b-98fe83c3a997" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/42e679b2-0805-4fa9-aafe-7b15e0d2c81e" alt="Home Screen View Example" width="260"/>
 </td>
 
 <td>
@@ -152,7 +193,7 @@
 <tr>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/18781a63-f4bd-4719-b9b5-b19ee8ebff86" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/b5ae098c-c306-44c7-a34d-a4f6a71f22af" alt="Download Screen View Example" width="260"/>
 </td>
 
 <td>
