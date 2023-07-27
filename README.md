@@ -60,20 +60,20 @@
 <tr>
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/42e679b2-0805-4fa9-aafe-7b15e0d2c81e" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/42e679b2-0805-4fa9-aafe-7b15e0d2c81e"  width="260"/>
 </td>
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/26729c27-4281-4e3b-b702-69a3b47f356d" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/26729c27-4281-4e3b-b702-69a3b47f356d"  width="260"/>
 </td>
 
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/447053d7-d520-4479-b64c-27284b42863e" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/447053d7-d520-4479-b64c-27284b42863e" width="260"/>
 </td>
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/fcaceafc-3d64-45d5-83d7-71c0dc67fa1c" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/fcaceafc-3d64-45d5-83d7-71c0dc67fa1c"  width="260"/>
 </td>
  
   
@@ -107,19 +107,19 @@
 
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e1673f94-04ec-4392-b00a-9a30af82b150" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e1673f94-04ec-4392-b00a-9a30af82b150" width="260"/>
 </td>
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/0d28f796-1aa2-4cb3-9dd4-34f6bb9fbc7d" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/0d28f796-1aa2-4cb3-9dd4-34f6bb9fbc7d" width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/7049565e-e4d9-4b75-b933-0ddf469be745" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/7049565e-e4d9-4b75-b933-0ddf469be745"  width="260"/>
 </td>
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/89476ef0-acd6-4666-a156-d24207dda0c8" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/89476ef0-acd6-4666-a156-d24207dda0c8" width="260"/>
 </td>
  
 
@@ -151,18 +151,18 @@
 
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/56fc5efc-3fec-4866-99a8-0ed8fa3ed1b5" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/56fc5efc-3fec-4866-99a8-0ed8fa3ed1b5"  width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/47239351-2fc2-4ba7-882b-da7bf2053184" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/47239351-2fc2-4ba7-882b-da7bf2053184"  width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/45e350e6-2d78-4ad8-96c1-b5870239f03c" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/45e350e6-2d78-4ad8-96c1-b5870239f03c"  width="260"/>
 </td>
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e58688f5-6d0c-4901-997b-92e49be47f24" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e58688f5-6d0c-4901-997b-92e49be47f24" width="260"/>
 </td>
 
 
@@ -193,19 +193,19 @@
 <tr>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/b5ae098c-c306-44c7-a34d-a4f6a71f22af" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/b5ae098c-c306-44c7-a34d-a4f6a71f22af"  width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/052e9975-7e1b-42d2-8b4e-860156345e29" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/052e9975-7e1b-42d2-8b4e-860156345e29" width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/54409e04-910e-42f3-80f4-6b9c39c6bb2a" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/54409e04-910e-42f3-80f4-6b9c39c6bb2a" width="260"/>
 </td>
 
 <td>
-  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/391e3e79-6e44-49a9-b727-e33292924c62" alt="Home Screen View Example" width="260"/>
+  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/391e3e79-6e44-49a9-b727-e33292924c62" width="260"/>
 </td>
 
 
@@ -245,7 +245,7 @@
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/62eb3560-8827-4910-b890-06eda91cc3a3" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/fbd6e29c-0be0-4f7d-ae30-91dbca4c3fb5" width="260"/>
 </td>
 
 
@@ -254,11 +254,6 @@
 </tr>
 
 </table>
-
-
-
-
-
 
 
 
