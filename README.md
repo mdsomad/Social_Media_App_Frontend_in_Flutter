@@ -225,7 +225,7 @@
    <th> Followers Screen View</th>
    <th> Following Screen View</th>
    <th> User Profile PopupMenuButton View</th>
-   <th> Search User Screen View</th>
+   <th> Login User Posts Screen View</th>
 </tr>  
   
   
@@ -233,20 +233,21 @@
 <tr>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/46218380-836d-4748-b8d8-7b9f4b4bbaa2" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/46218380-836d-4748-b8d8-7b9f4b4bbaa2" width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/4313f840-53b6-4821-a59f-2a6c1ec700bf" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/4313f840-53b6-4821-a59f-2a6c1ec700bf"  width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/495d51de-2c7c-45b2-bd9f-01ccf886a12a" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/1716e595-ada8-44a5-a2eb-ea71291742cb" width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e90d0c72-c135-475e-b3ea-c80448ea211b" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/62eb3560-8827-4910-b890-06eda91cc3a3" width="260"/>
 </td>
+
 
 
   
@@ -254,5 +255,33 @@
 
 </table>
 
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+  
+  
+<tr>                    
+   <th> Search User Screen View</th>
+</tr>  
+
+<tr>
+
+<td>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e90d0c72-c135-475e-b3ea-c80448ea211b" width="260"/>
+</td>
+
+</tr>
+
+</table>
 
 
