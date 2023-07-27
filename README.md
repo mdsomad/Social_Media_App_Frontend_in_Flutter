@@ -233,7 +233,7 @@
 <tr>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/75e0705b-d905-45af-822b-819ae3d3e140" alt="Download Screen View Example" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/46218380-836d-4748-b8d8-7b9f4b4bbaa2" alt="Download Screen View Example" width="260"/>
 </td>
 
 <td>
@@ -253,10 +253,6 @@
 </tr>
 
 </table>
-
-
-
-
 
 
 
