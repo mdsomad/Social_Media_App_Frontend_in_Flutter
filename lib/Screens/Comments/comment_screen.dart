@@ -60,7 +60,7 @@ class _CommentScreenState extends State<CommentScreen> {
                                 radius: 50,
                                 backgroundImage: CommentBox.commentImageParser(
                                     imageURLorPath:
-                                        data.comments[i].user!.avater!.url)),
+                                       data.comments[i].user!.avater!.url != "" ? data.comments[i].user!.avater!.url :  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400")),
                           ),
                         ),
                         title: GestureDetector(
@@ -299,7 +299,7 @@ class _CommentScreenState extends State<CommentScreen> {
                 
                 return CommentBox(
                   userImage: CommentBox.commentImageParser(
-                      imageURLorPath:state2.userProfileDetels.avater!.url!),
+                      imageURLorPath: state2.userProfileDetels.avater!.url! != "" ? state2.userProfileDetels.avater!.url! : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"),
                   child: commentChild(state),
                   labelText: 'Write a comment...',
                   errorText: 'Comment cannot be blank',

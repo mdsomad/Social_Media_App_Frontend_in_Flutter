@@ -209,7 +209,7 @@ class PostCard extends StatelessWidget {
             Row(children: [
               CircleAvatar(
                 radius: 30,
-                backgroundImage: NetworkImage(postData.owner!.avater!.url!),
+                backgroundImage: NetworkImage(postData.owner!.avater!.url! != "" ? postData.owner!.avater!.url! :  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"),
               ),
 
               SizedBox(

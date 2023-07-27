@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Error_Model.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
@@ -8,6 +9,7 @@ import 'package:social_media_app_frontend_in_flutter/Repository/user_repository.
 import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/preferences.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
+import 'package:social_media_app_frontend_in_flutter/Utils/utils.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_cubit/user_state.dart';
 
 
@@ -104,6 +106,23 @@ final UserRepository _userRepository = UserRepository();
     }
     catch(ex) {
       emit(UserErrorState(ex.toString()) );
+    }
+  }
+
+
+
+
+
+// TODO Create User createAccount function
+  Future<bool> deleteAccount(BuildContext context) async {
+    try {
+      final deleteMeResponse = await _userRepository.deleteAccount();
+      Utils.ftushBarSussessMessage(deleteMeResponse.toString(),context);
+      log(deleteMeResponse!);
+      return true;
+    }
+    catch(ex) {
+      return false;
     }
   }
    

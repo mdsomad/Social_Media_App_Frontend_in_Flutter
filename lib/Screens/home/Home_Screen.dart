@@ -13,6 +13,7 @@ import 'package:social_media_app_frontend_in_flutter/Resources/Components/log.da
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/following_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/home/Widgets/HomeView.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/Comments/comment_screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/splash/splash_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_cubits.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/comment_cubits/comment_state.dart';
@@ -48,20 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(child: Text(state.message));
           }
 
-          return HomeView(allPosts: state.post,isUserPosts: false,);
-  
+          return HomeView(
+            allPosts: state.post,
+            isUserPosts: false,
+          );
         },
       ),
     );
   }
-
-
-
-
-
-
-
-
-
 }
-

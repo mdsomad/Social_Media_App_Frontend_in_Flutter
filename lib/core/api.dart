@@ -325,3 +325,30 @@ class ApiResponseChangePassword {
 
 
 
+
+// TODO: Create ApiResponseUserToFollow class
+class ApiResponseDeleteMe {
+  bool success;
+  String? message;
+
+  ApiResponseDeleteMe({
+    required this.success,
+    this.message
+  });
+
+  factory ApiResponseDeleteMe.fromResponse(Response response) {
+    final data = response.data as Map<String, dynamic>;
+    return ApiResponseDeleteMe(
+      success: data["success"],
+      message: data["message"] ?? "Unexpected error"
+    );
+  }
+
+  get statusCode => null;
+}
+
+
+
+
+
+

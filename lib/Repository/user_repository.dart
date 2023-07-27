@@ -4,11 +4,13 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/Use_profiledetels_model.dart';
 import 'package:social_media_app_frontend_in_flutter/Models/User_Model.dart';
+import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
 import 'package:social_media_app_frontend_in_flutter/core/api.dart';
 
 class UserRepository {
   
   final _api = Api();
+  final _apiBearerToken = ApiBearerToken();  //* <-- Create Api class object
 
 
 
@@ -73,6 +75,38 @@ Future<UserModel> signIn({
     UserModel userModel = UserModel(status:apiResponse.status,message:apiResponse.message,token:apiResponse.token ,userId:apiResponse.userId);
 
     return userModel;
+  }
+  catch(ex) {
+    rethrow;
+  }
+}
+
+
+
+
+
+
+//TODO: Create signIn function
+Future<String?> deleteAccount() async {
+  try {
+    Response response = await _apiBearerToken.sendRequest.delete(
+      "/delete/me",
+      options: Options(headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer ${SessionControllerTolen().token.toString()}",
+          })
+    );
+
+     ApiResponseDeleteMe apiResponseDeleteMe = ApiResponseDeleteMe.fromResponse(response);
+
+    if(!apiResponseDeleteMe.success) {
+      log(apiResponseDeleteMe.message.toString());
+      throw apiResponseDeleteMe.message.toString();
+    }
+
+   
+
+    return apiResponseDeleteMe.message;
   }
   catch(ex) {
     rethrow;

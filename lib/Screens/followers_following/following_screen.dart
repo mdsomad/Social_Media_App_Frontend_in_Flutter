@@ -57,7 +57,7 @@ class FollowingScreen extends StatelessWidget {
                      leading: CircleAvatar(
                        backgroundColor: Colors.red,
                       radius:28,
-                     backgroundImage: NetworkImage(state.followers_following[i].avater!.url.toString(),scale: 1.0),
+                     backgroundImage: NetworkImage(state.followers_following[i].avater!.url! != "" ? state.followers_following[i].avater!.url.toString() :  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400",scale: 1.0),
                      
                      ),
                      title: InkWell(

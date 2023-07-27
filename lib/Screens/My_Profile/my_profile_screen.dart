@@ -13,6 +13,7 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Auth/Login_Screen.d
 import 'package:social_media_app_frontend_in_flutter/Screens/Settings/settings_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/followers_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/followers_following/following_Screen.dart';
+import 'package:social_media_app_frontend_in_flutter/Screens/splash/splash_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Screens/user_posts/user_posts_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/Services/session_manager.dart';
 import 'package:social_media_app_frontend_in_flutter/Utils/utils.dart';
@@ -122,8 +123,8 @@ updateProfileImage(File file){
                                       child: ListTile(
                                         onTap: (){
                                           BlocProvider.of<UserCubit>(context).signOut().then((value) {
-                                                    Navigator.pushReplacementNamed(
-                                                      context, LoginScreen.routeName);
+                                                    Navigator.pushNamed(
+                                                      context, SplashScreen.routeName);
                                                   });
                                         },
                                         leading: Icon(

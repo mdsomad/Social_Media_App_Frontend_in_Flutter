@@ -85,7 +85,7 @@ class UsersProfiles extends StatelessWidget {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                              state.userProfileDetels.avater!.url!),
+                             state.userProfileDetels.avater!.url != "" ? state.userProfileDetels.avater!.url! :  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"),
                         ),
                       ),
                     ),

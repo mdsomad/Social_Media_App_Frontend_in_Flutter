@@ -35,7 +35,7 @@ class _SignupScreenState extends State<SignupScreen> {
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
-          title: const Text("Ecommerce App")
+          title: const Text("Social Media App")
         ),
 
         body: SafeArea(
