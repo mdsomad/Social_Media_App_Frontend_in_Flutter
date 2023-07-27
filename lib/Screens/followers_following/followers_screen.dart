@@ -72,7 +72,7 @@ class FollowersScreen extends StatelessWidget {
            ),]
       ),
       
-    ):Center(child: Text("No Following yet",style: TextStyle(fontSize: 25,fontWeight:FontWeight.bold)));
+    ):Center(child: Text("No Followers yet",style: TextStyle(fontSize: 25,fontWeight:FontWeight.bold)));
 
 
 
