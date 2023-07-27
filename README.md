@@ -222,7 +222,7 @@
   
   
 <tr>                    
-   
+   <th> Followers Screen View</th>
    <th> Following Screen View</th>
    <th> User Profile PopupMenuButton View</th>
    <th> Search User Screen View</th>
@@ -231,6 +231,10 @@
   
   
 <tr>
+
+<td>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/75e0705b-d905-45af-822b-819ae3d3e140" alt="Download Screen View Example" width="260"/>
+</td>
 
 <td>
  <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/4313f840-53b6-4821-a59f-2a6c1ec700bf" alt="Download Screen View Example" width="260"/>
@@ -249,5 +253,10 @@
 </tr>
 
 </table>
+
+
+
+
+
 
 
