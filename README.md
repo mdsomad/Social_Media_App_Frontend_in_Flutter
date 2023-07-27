@@ -181,11 +181,12 @@
 <table>
   
   
-<tr>                    
-   <th> Edit Caption Screen View</th>
-   <th> Settings Screen View</th>
+<tr>  
+   <th> Search User Screen View</th>
+   <th>  Settings Screen Vieww</th>
    <th> Change Password Screen View</th>
    <th>Profile Details Update Screen View</th>
+   
 </tr>  
   
   
@@ -193,11 +194,11 @@
 <tr>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/b5ae098c-c306-44c7-a34d-a4f6a71f22af"  width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e90d0c72-c135-475e-b3ea-c80448ea211b" width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/052e9975-7e1b-42d2-8b4e-860156345e29" width="260"/>
+ <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/b5ae098c-c306-44c7-a34d-a4f6a71f22af"  width="260"/>
 </td>
 
 <td>
@@ -257,26 +258,5 @@
 
 
 
-
-
-
-
-
-<table>
-  
-  
-<tr>                    
-   <th> Search User Screen View</th>
-</tr>  
-
-<tr>
-
-<td>
- <img src="https://github.com/mdsomad/Social_Media_App_Frontend_in_Flutter/assets/103892160/e90d0c72-c135-475e-b3ea-c80448ea211b" width="260"/>
-</td>
-
-</tr>
-
-</table>
 
 
