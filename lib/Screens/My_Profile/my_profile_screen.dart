@@ -245,9 +245,8 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      buildStatColumn(
-                          state.userProfileDetels.posts!.length.toString(),
-                          "Photos"), //* <-- Call buildStatColumn Function
+                      buildStatColumn(state.userProfileDetels.posts!.length.toString(),"Photos"),    //* <-- Call buildStatColumn Function
+
                       InkWell(
                         onTap: () {
                           log("click");
@@ -256,11 +255,10 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
                               context, FollowersScreen.routeName,
                               arguments: user);
                         },
-                        child: buildStatColumn(
-                            state.userProfileDetels.followers!.length
-                                .toString(),
-                            "Followers"),
+                        child: buildStatColumn(state.userProfileDetels.followers!.length.toString(),"Followers"),
                       ),
+
+
                       InkWell(
                         onTap: () {
                           UserProfileDetelsModel user = state.userProfileDetels;
@@ -268,10 +266,7 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
                               context, FollowingScreen.routeName,
                               arguments: user);
                         },
-                        child: buildStatColumn(
-                            state.userProfileDetels.following!.length
-                                .toString(),
-                            "Following"),
+                        child: buildStatColumn(state.userProfileDetels.following!.length.toString(),"Following"),
                       ),
                     ],
                   ),
@@ -289,6 +284,7 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
 
         BlocBuilder<PostCubit, PostState>(
           builder: (context, state) {
+
             List<PostModel> filterPost = state.post.where(((element) => element.owner!.sId.toString() == SessionController().userid)).toList();
 
             return Expanded(
@@ -296,13 +292,11 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
                 margin: EdgeInsets.only(left: 8, right: 8, top: 8),
                 decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(0.15),
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(25))),
+                    borderRadius:BorderRadius.vertical(top: Radius.circular(25))),
                 child: GridView.builder(
                     itemCount: filterPost.length,
                     padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                    gridDelegate:const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 200,
                             childAspectRatio: 3 / 2,
                             crossAxisSpacing: 20,
@@ -315,8 +309,7 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
                                 arguments: {"sId": SessionController().userid});
                             log(index.toString());
                           },
-                          child: buildPictureCard(
-                              filterPost[index].images!.url.toString()));
+                          child: buildPictureCard(filterPost[index].images!.url.toString()));
                     }),
               ),
             );
@@ -368,6 +361,7 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
             fontWeight: FontWeight.bold,
           ),
         ),
+
         Text(
           title,
           style: TextStyle(
@@ -389,8 +383,7 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
 
 
 //TODO Create BottomSheet Function
-  BottomSheet(BuildContext context) {
-    //* <-- showModalBottomSheet 2 Method
+  BottomSheet(BuildContext context) {       //* <-- showModalBottomSheet 2 Method
     return showModalBottomSheet(
         context: context,
         backgroundColor: Colors.transparent,
@@ -453,11 +446,12 @@ Future<bool?> imagePick(ImageSource src, BuildContext context) async {
                         ),
                         title: Text("Camrea"),
                       ),
-                      Divider(),
+
+                     const Divider(),
+
                       ListTile(
                         onTap: () {
                           log("Click Edit Caption");
-                          //  Navigator.pushNamed(context, PostDeleteScreen.routeName,arguments:postData);
                           imagePick(ImageSource.gallery, context);
                           Navigator.pop(context);
                         },

@@ -24,85 +24,16 @@ class HomeView extends StatelessWidget {
   List<PostModel> allPosts;
   HomeView({super.key,required this.allPosts,required this.isUserPosts});
 
-  var storyData = [
-    {
-      'imageUrl':
-          'https://img.freepik.com/free-vector/realistic-samurai-illustrated-background_52683-69460.jpg?w=740&t=st=1686137185~exp=1686137785~hmac=390704896744102739b13593a6ee86ac579820b437588272dda37641c152fe9b',
-      'userName': 'user1f',
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/free-vector/little-blond-boy-anime_18591-77251.jpg?size=626&ext=jpg&ga=GA1.2.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'user2',
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/premium-vector/heart-girl-anime-character_603843-485.jpg?size=626&ext=jpg&ga=GA1.2.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'user3',
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/free-photo/girl-with-backpack-sunset-generative-al_169016-28612.jpg?size=338&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'user4',
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/premium-vector/character-design-girl-bring-stick_286658-173.jpg?size=626&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'user5',
-    },
-  ];
 
-  var postData = [
-    {
-      'imageUrl':
-          'https://images.unsplash.com/photo-1508606572321-901ea443707f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJlYXV0aWZ1bCUyMGdpcmxzfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60',
-      'userName': 'Somad',
-      "profileImage":
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJlYXV0aWZ1bCUyMGdpcmxzfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60"
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/free-vector/realistic-samurai-illustrated-background_52683-69460.jpg?w=740&t=st=1686137185~exp=1686137785~hmac=390704896744102739b13593a6ee86ac579820b437588272dda37641c152fe9b',
-      'userName': 'Hamja',
-      "profileImage":
-          "https://img.freepik.com/free-vector/little-blond-boy-anime_18591-77251.jpg?size=626&ext=jpg&ga=GA1.2.647470437.1685963067&semt=robertav1_2_sidr"
-    },
- 
-    {
-      'imageUrl':
-          'https://img.freepik.com/free-vector/little-blond-boy-anime_18591-77251.jpg?size=626&ext=jpg&ga=GA1.2.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'Amir',
-      "profileImage":
-          "https://img.freepik.com/premium-vector/character-design-girl-bring-stick_286658-173.jpg?size=626&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr"
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/premium-vector/heart-girl-anime-character_603843-485.jpg?size=626&ext=jpg&ga=GA1.2.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'Pinky',
-      "profileImage":
-          "https://img.freepik.com/free-vector/little-blond-boy-anime_18591-77251.jpg?size=626&ext=jpg&ga=GA1.2.647470437.1685963067&semt=robertav1_2_sidr"
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/free-photo/girl-with-backpack-sunset-generative-al_169016-28612.jpg?size=338&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'Sonum',
-      "profileImage":
-          "https://img.freepik.com/premium-vector/character-design-girl-bring-stick_286658-173.jpg?size=626&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr"
-    },
-    {
-      'imageUrl':
-          'https://img.freepik.com/premium-vector/character-design-girl-bring-stick_286658-173.jpg?size=626&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
-      'userName': 'Rohan',
-      "profileImage":
-          "https://img.freepik.com/free-vector/little-blond-boy-anime_18591-77251.jpg?size=626&ext=jpg&ga=GA1.2.647470437.1685963067&semt=robertav1_2_sidr"
-    },
-  ];
 
   var likeImagesList = [
     'https://img.freepik.com/free-photo/girl-with-backpack-sunset-generative-al_169016-28612.jpg?size=338&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
     'https://img.freepik.com/free-photo/girl-with-backpack-sunset-generative-al_169016-28612.jpg?size=338&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
     'https://img.freepik.com/premium-vector/character-design-girl-bring-stick_286658-173.jpg?size=626&ext=jpg&ga=GA1.1.647470437.1685963067&semt=robertav1_2_sidr',
   ];
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +81,7 @@ class HomeView extends StatelessWidget {
                           physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
 
-                            return StoryCard(    //* <-- StoryCard Widget Called
+                            return StoryCard(                               //* <-- StoryCard Widget Called
                               profileImage: allPosts[index].images!.url!,   //* <-- storyData List imageUrl Data Send
                               userName: allPosts[index].owner!.name!,       //* <-- storyData List userName Data Send
                             );
@@ -170,9 +101,9 @@ class HomeView extends StatelessWidget {
                     itemCount: allPosts.length,
                     itemBuilder: (context, index) {
 
-                      return PostCard(        //* <-- PostCard Widget Called
-                        likeImagesList: allPosts, //* <-- likeImagesList Data Send
-                        postData: allPosts[index],      //* <-- postData List Data Send
+                      return PostCard(                //* <-- PostCard Widget Called
+                        likeImagesList: allPosts,     //* <-- likeImagesList Data Send
+                        postData: allPosts[index],    //* <-- postData List Data Send
                       );
 
                     }),
@@ -182,6 +113,10 @@ class HomeView extends StatelessWidget {
         ));
   }
 }
+
+
+
+
 
 //TODO: Create PostCard Widget
 class PostCard extends StatelessWidget {
@@ -284,9 +219,9 @@ class PostCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  // LikesImages(
-                  //   likeImages: likeImagesList,
-                  // ),
+                  //! LikesImages(
+                  //!   likeImages: likeImagesList,
+                  //! ),
 
                   SizedBox(
                     width: 15,
