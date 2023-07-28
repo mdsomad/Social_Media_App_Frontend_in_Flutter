@@ -65,6 +65,14 @@ class _UpdateScreenState extends State<UpdateScreen> {
     );
   }
 
+
+
+
+
+
+
+
+
  Widget editProfile(UserProfileDetelsModel userProfileDetelsModel, UserProfileDetelsModel oldUserProfileDetelsModel,UpdateProfileProvider provider, BuildContext context) {
     return Form(
           // key: provider.formKey,
@@ -131,7 +139,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                      RoundButton(
                       loading: provider.isLoading,
                       title: "Update Profile", onTap: () { 
-                         BlocProvider.of<UserProfileDetelsCubit>(context).updateUser(emailUpdateController.text,nameUpdateController.text,userProfileDetelsModel,context);
+                         BlocProvider.of<UserProfileDetelsCubit>(context).updateUser(emailUpdateController.text,nameUpdateController.text,userProfileDetelsModel,context);    //* <-- updateUser detels Function Call
                        },
                      )
                    ),

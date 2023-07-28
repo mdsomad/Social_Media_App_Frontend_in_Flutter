@@ -74,7 +74,7 @@ class _AddCaptionScreenState extends State<AddCaptionScreen> {
                  padding: const EdgeInsets.all(15),
                  child: RoundButton(
                   onTap: (){
-                     provider.postUpload(widget.data["imageFile"]);
+                     provider.postUpload(widget.data["imageFile"]);     //* <-- postUpload Function Call
                  },
                   title: "Post Upload",
                    loading: provider.isLoading,

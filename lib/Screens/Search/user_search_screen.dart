@@ -10,7 +10,7 @@ class UserSearchScreen extends StatelessWidget {
   UserSearchScreen({super.key});
 
   final searchController = TextEditingController();
-  
+
   bool isSearch = false;
   @override
   Widget build(BuildContext context) {
@@ -32,61 +32,72 @@ class UserSearchScreen extends StatelessWidget {
                   hintText: "Search For User",
                   suffixIcon: IconButton(
                       onPressed: () {
-                        if(searchController.text != ""){
-
-                         BlocProvider.of<SearchUserCubit>(context)
-                            .SearchUser(searchName: searchController.text);
+                        if (searchController.text != "") {
+                          BlocProvider.of<SearchUserCubit>(context).SearchUser(searchName: searchController.text);   //* <-- SearchUser Function Call
                         }
                       },
                       icon: Icon(Icons.search)),
-                  border: OutlineInputBorder(
+                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(7),
                       borderSide: BorderSide(
                         color: Colors.yellow,
                         width: 50,
                       )),
-                ),
-                onChanged: (value) {
-                  // BlocProvider.of<SearchUserCubit>(context).SearchUser(searchName: value);
+                ), onChanged: (value) {
+                  //! BlocProvider.of<SearchUserCubit>(context).SearchUser(searchName: value);
                   log(value);
                 },
               ),
             ),
           ),
+
+
+
+
           Divider(
             height: 10,
             thickness: 1,
           ),
+
+
+
+
+
           BlocBuilder<SearchUserCubit, UserSearchState>(
             builder: (context, state) {
+              if (state is SearchUserLoadingState) {
+                return Expanded(
+                    child: Center(
+                  child: CircularProgressIndicator(),
+                ));
+              }
 
-            if(state is SearchUserLoadingState){
-             return Expanded(child: Center(child: CircularProgressIndicator(),));
-           }
+              if (state is SearchUserErrorState) {
+                Expanded(
+                    child: Center(
+                  child: Text(state.message),
+                ));
+              }
 
-
-           if(state is SearchUserErrorState){
-              Expanded(child: Center(child: Text(state.message),));
-           }
-              
               return Expanded(
                 child: Container(
-                  // color: Colors.yellow,
-                  child:  ListView(
-                    children: [
-
-                      for (var i = 0; i < state.searchUser.length; i++)
+                    // color: Colors.yellow,
+                  child: ListView(
+                  children: [
+                    for (var i = 0; i < state.searchUser.length; i++)
                       ListTile(
                         onTap: () {
                           log("Clicked Search");
-                          Navigator.pushNamed(context, UsersProfiles.routeName,arguments:{"sId":state.searchUser[i].sId!} );
+                          Navigator.pushNamed(context, UsersProfiles.routeName,
+                              arguments: {"sId": state.searchUser[i].sId!});
                         },
                         leading: CircleAvatar(
                           backgroundColor: Colors.yellow,
-                          backgroundImage: NetworkImage(
-                             state.searchUser[i].avater!.url != "" ? state.searchUser[i].avater!.url! :  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"
-                              // "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                              ),
+                          backgroundImage: NetworkImage(state
+                                      .searchUser[i].avater!.url !=
+                                  ""
+                              ? state.searchUser[i].avater!.url!
+                              : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"),
                         ),
                         title: Row(
                           children: [
@@ -94,11 +105,13 @@ class UserSearchScreen extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
-                           state.searchUser[i].userverify == true ? Icon(
-                              Icons.verified_user,
-                              size: 16,
-                              color: Colors.green,
-                            ) : SizedBox(),
+                            state.searchUser[i].userverify == true
+                                ? Icon(
+                                    Icons.verified_user,
+                                    size: 16,
+                                    color: Colors.green,
+                                  )
+                                : SizedBox(),
                           ],
                         ),
                         trailing: IconButton(
@@ -110,9 +123,8 @@ class UserSearchScreen extends StatelessWidget {
                               size: 17,
                             )),
                       )
-                    ],
-                  ) 
-                ),
+                  ],
+                )),
               );
             },
           )

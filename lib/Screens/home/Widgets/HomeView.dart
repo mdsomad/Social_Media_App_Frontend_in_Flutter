@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:ffi';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -265,12 +266,13 @@ class PostCard extends StatelessWidget {
           
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.network(
-              postData.images!.url!,
-              height: 500,
-              width: double.infinity,
-               fit: BoxFit.fill,
-            ),
+            child: CachedNetworkImage(
+                    height: 550,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                    imageUrl: postData.images!.url!,
+                  )
+            
           ),
 
          const SizedBox(

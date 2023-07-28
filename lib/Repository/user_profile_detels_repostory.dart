@@ -19,7 +19,7 @@ class UserProfileDetelsRepository {
 
 
 
-//TODO: Create fetchProductsByCategory function 
+//TODO: Create UserProfileDetelsGet function 
 Future<UserProfileDetelsModel> UserProfileDetelsGet() async {
 
   try {
@@ -51,7 +51,7 @@ Future<UserProfileDetelsModel> UserProfileDetelsGet() async {
 
 
 
-//TODO: Create fetchProductsByCategory function 
+//TODO: Create fetchUserById function 
 Future<UserProfileDetelsModel> fetchUserById(userId) async {
 
   try {
@@ -88,7 +88,7 @@ Future<UserProfileDetelsModel> fetchUserById(userId) async {
 
 
 
-//TODO: Create fetchProductsByCategory function 
+//TODO: Create userToFollow function 
 Future<UserProfileDetelsModel> userToFollow(userId) async {
 
   try {

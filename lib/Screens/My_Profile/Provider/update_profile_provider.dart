@@ -52,11 +52,6 @@ class UpdateProfileProvider with ChangeNotifier {
 
 
 
-//TODO Create postUpload Function
-// void UserProfile(Userdm) async {
-//      BlocProvider.of<PostCubit>(context).PostUpload(file:file,caption:addCaptionController.text.toString());
-// }
-
 
 
 @override

@@ -8,14 +8,11 @@ import 'package:social_media_app_frontend_in_flutter/Screens/Settings/Widgets/ch
 import 'package:social_media_app_frontend_in_flutter/Screens/splash/splash_screen.dart';
 import 'package:social_media_app_frontend_in_flutter/logic/cubits/user_cubit/user_cubit.dart';
 
-
-
-
 class SettingsScreen extends StatelessWidget {
   final UserProfileDetelsModel userModel;
-  const SettingsScreen({super.key,required this.userModel});
+  const SettingsScreen({super.key, required this.userModel});
 
-   static const String routeName = "settingsScreen";
+  static const String routeName = "settingsScreen";
 
   @override
   Widget build(BuildContext context) {
@@ -26,35 +23,40 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: ListView(children: [
         ListTile(
-          onTap: (){
+          onTap: () {
             log("Clicked Change password");
             Navigator.pushNamed(context, ChangePasswordScreen.routeName);
           },
           leading: Icon(Icons.key),
           title: Text("Change Password"),
         ),
-
         ListTile(
-          onTap: (){
+          onTap: () {
             log("Clicked Update Profile");
-            Navigator.pushNamed(context, UpdateScreen.routeName,arguments:userModel);
+            Navigator.pushNamed(context, UpdateScreen.routeName,
+                arguments: userModel);
           },
           leading: Icon(Icons.edit),
           title: Text("Update Profile"),
         ),
         ListTile(
-          onTap: (){
+          onTap: () {
             log("Clicked Delete Account");
-            BlocProvider.of<UserCubit>(context).deleteAccount(context).then((value) {
-               if(value == true){
-                  BlocProvider.of<UserCubit>(context).signOut().then((value) {
-                    Navigator.pushNamed(context, SplashScreen.routeName);});
-               }
-                                                   
-                                                  });
-            // Navigator.pushNamed(context, UpdateScreen.routeName,arguments:userModel);
+            BlocProvider.of<UserCubit>(context).deleteAccount(context)                  //* <-- deleteAccount Function Call       
+                .then((value) {
+              if (value == true) {
+
+                //* signOut Function Call
+                BlocProvider.of<UserCubit>(context).signOut().then((value) {
+                  Navigator.pushNamed(context, SplashScreen.routeName);
+                });
+              }
+            });
           },
-          leading: Icon(Icons.person,color: Colors.red,),
+          leading: Icon(
+            Icons.person,
+            color: Colors.red,
+          ),
           title: Text("Delete Account "),
         ),
       ]),

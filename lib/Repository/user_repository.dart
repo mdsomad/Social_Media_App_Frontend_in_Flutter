@@ -86,7 +86,7 @@ Future<UserModel> signIn({
 
 
 
-//TODO: Create signIn function
+//TODO: Create deleteAccount function
 Future<String?> deleteAccount() async {
   try {
     Response response = await _apiBearerToken.sendRequest.delete(

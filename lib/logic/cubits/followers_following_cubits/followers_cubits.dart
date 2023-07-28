@@ -14,18 +14,22 @@ class FollowersCubit extends Cubit<FollowersFollowingState> {
 
   final _followersFollowingRepository = FollowersFollowingRepository();
 
-  void  _fetchFollowers() async {
-    emit(FollowersFollowingLoadingState(state.followers_following));
-    try {
-      final followers = await _followersFollowingRepository.fetchFollowers(user.sId!);
-      Loggerclass.logger.i(followers);
-      emit(FollowersFollowingLoadedState(followers) );
-    }
-    catch(ex) {
-      Loggerclass.logger.e(ex);
-      emit( FollowersFollowingErrorState(ex.toString(),state.followers_following) );
-    }
+
+
+
+//TODO: Create _fetchFollowers Function
+void  _fetchFollowers() async {
+  emit(FollowersFollowingLoadingState(state.followers_following));
+  try {
+    final followers = await _followersFollowingRepository.fetchFollowers(user.sId!);
+    Loggerclass.logger.i(followers);
+    emit(FollowersFollowingLoadedState(followers) );
   }
+  catch(ex) {
+    Loggerclass.logger.e(ex);
+    emit( FollowersFollowingErrorState(ex.toString(),state.followers_following) );
+  }
+}
 
 
 

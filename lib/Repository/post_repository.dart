@@ -17,7 +17,7 @@ class PostRepository {
 
 
 
-  //TODO: Create fetchAllProducts function 
+  //TODO: Create fetchAllPost function 
   Future<List<PostModel>> fetchAllPost() async {
     try {
       Response response = await _api.sendRequest.get("/getAllPost");
@@ -45,7 +45,10 @@ class PostRepository {
 
 
 
-//TODO: Create fetchProductsByCategory function 
+
+
+
+//TODO: Create LikeAndUnlikePost function 
 Future<PostModel> LikeAndUnlikePost(String sId) async {
 
   try {
@@ -81,7 +84,7 @@ Future<PostModel> LikeAndUnlikePost(String sId) async {
 
 
 
-//TODO: Create fetchProductsByCategory function 
+//TODO: Create PostUpload function 
 Future<PostModel> PostUpload(File file,String caption) async {
 
   try {
@@ -124,7 +127,7 @@ Future<PostModel> PostUpload(File file,String caption) async {
 
 
 
-//TODO: Create fetchProductsByCategory function 
+//TODO: Create UpdateCaption function 
 Future<PostModel> UpdateCaption({required String sId,required String caption}) async {
 
   try {
@@ -163,7 +166,7 @@ Future<PostModel> UpdateCaption({required String sId,required String caption}) a
 
 
 
-//TODO: Create fetchProductsByCategory function 
+//TODO: Create PostDelete function 
 Future<bool> PostDelete({required String sId}) async {
 
   try {

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,39 +38,46 @@ class MyProfilScreen extends StatefulWidget {
 class My_ProfilScreenState extends State<MyProfilScreen> {
 
 
+
+
+
+
 //TODO: Create videoPick Function
-  Future<bool?> imagePick(ImageSource src, BuildContext context) async {
-    final _pickedImage = await ImagePicker().pickImage(source: src);
-    if (_pickedImage != null) {
-      log("Image picked");
+Future<bool?> imagePick(ImageSource src, BuildContext context) async {
+  final _pickedImage = await ImagePicker().pickImage(source: src);
+  if (_pickedImage != null) {
+    log("Image picked");
 
-      updateProfileImage(File(_pickedImage.path));
-      return true;
-    } else {
-      Loggerclass.logger.e("Error In Selecting Video Please Choose A Different Video File");
-      Utils.ftushBarErrorMessage("Error In Selecting Video Please Choose A Different Video File",context);
-      return false;
-    }
+    updateProfileImage(File(_pickedImage.path));     //* <-- updateProfileImage Function Call
+    return true;
+  } else {
+    Loggerclass.logger
+        .e("Error In Selecting Video Please Choose A Different Video File");
+    Utils.ftushBarErrorMessage(
+        "Error In Selecting Video Please Choose A Different Video File",
+        context);
+    return false;
   }
-
-
-updateProfileImage(File file){
-    BlocProvider.of<UserProfileDetelsCubit>(context).UpdateProfileImage(file:file);
 }
 
-  
+
+ 
+ //TODO: Create updateProfileImage Function
+  updateProfileImage(File file) {
+    BlocProvider.of<UserProfileDetelsCubit>(context).UpdateProfileImage(file: file);   //* <-- UpdateProfileImage Function Call
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    BlocProvider.of<UserProfileDetelsCubit>(context).initialize();
+    BlocProvider.of<UserProfileDetelsCubit>(context).initialize();      //* <-- initialize User Profile Detels Get Function Call
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -82,7 +90,7 @@ updateProfileImage(File file){
                 ),
               );
             }
-          
+
             if (state is UserProfileDetelsErrorState) {
               return Expanded(
                 child: Center(
@@ -90,7 +98,7 @@ updateProfileImage(File file){
                 ),
               );
             }
-          
+
             if (state is UserProfileDetelsLoadedState) {
               return Column(
                 children: [
@@ -121,11 +129,13 @@ updateProfileImage(File file){
                                   PopupMenuItem(
                                       value: 2,
                                       child: ListTile(
-                                        onTap: (){
+                                        onTap: () {
+
+                                          //* signOut Function Call
                                           BlocProvider.of<UserCubit>(context).signOut().then((value) {
-                                                    Navigator.pushNamed(
-                                                      context, SplashScreen.routeName);
-                                                  });
+                                            Navigator.pushNamed(context,
+                                                SplashScreen.routeName);
+                                          });
                                         },
                                         leading: Icon(
                                           Icons.logout,
@@ -133,14 +143,8 @@ updateProfileImage(File file){
                                         ),
                                         title: Text("Logout"),
                                       )
-          
-                                      //  IconButton(onPressed: (){
-                                      //      cubit.signOut().then((value) {
-                                      //               Navigator.pushReplacementNamed(
-                                      //                   context, LoginScreen.routeName);
-                                      //             });
-                                      //     Navigator.pop(context);
-                                      // }, icon: Icon(Icons.logout,color: Colors.red,))
+
+
                                       ),
                                 ])
                       ],
@@ -169,25 +173,29 @@ updateProfileImage(File file){
                               ],
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(state.userProfileDetels.avater!.url != ""
+                                image: NetworkImage(state
+                                            .userProfileDetels.avater!.url !=
+                                        ""
                                     ? state.userProfileDetels.avater!.url!
                                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20221208232400"),
                               ),
                             ),
                           ),
-                        //  Positioned(
-                        //           top: 58,
-                        //           left: 25,
-                        //           child: CircularProgressIndicator(
-                        //             color: Colors.yellow,
-                        //           ))
                         ],
                       ),
                     ),
                   ),
+
+
+
+
                   const SizedBox(
                     height: 10,
                   ),
+
+
+
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -198,10 +206,14 @@ updateProfileImage(File file){
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+
+
                       SizedBox(
                         width:
                             state.userProfileDetels.userverify == true ? 5 : 0,
                       ),
+
+
                       state.userProfileDetels.userverify == true
                           ? Icon(
                               Icons.verified_user,
@@ -211,6 +223,10 @@ updateProfileImage(File file){
                           : SizedBox()
                     ],
                   ),
+
+
+
+
                   Text(
                     "London, England",
                     style: TextStyle(
@@ -218,9 +234,14 @@ updateProfileImage(File file){
                       color: Colors.grey[400],
                     ),
                   ),
+
+
                   const SizedBox(
                     height: 20,
                   ),
+
+
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -257,18 +278,19 @@ updateProfileImage(File file){
                 ],
               );
             }
-          
+
             return Text("No Data");
           },
         ),
+
+
+
+
+
         BlocBuilder<PostCubit, PostState>(
           builder: (context, state) {
-            List<PostModel> filterPost = state.post
-                .where(((element) =>
-                    element.owner!.sId.toString() ==
-                    SessionController().userid))
-                .toList();
-          
+            List<PostModel> filterPost = state.post.where(((element) => element.owner!.sId.toString() == SessionController().userid)).toList();
+
             return Expanded(
               child: Container(
                 margin: EdgeInsets.only(left: 8, right: 8, top: 8),
@@ -301,8 +323,9 @@ updateProfileImage(File file){
           },
         )
       ],
-        ));
+    ));
   }
+
 
 
 
@@ -325,6 +348,8 @@ updateProfileImage(File file){
       ),
     );
   }
+
+
 
 
 
@@ -363,9 +388,8 @@ updateProfileImage(File file){
 
 
 
-
 //TODO Create BottomSheet Function
-BottomSheet(BuildContext context) {
+  BottomSheet(BuildContext context) {
     //* <-- showModalBottomSheet 2 Method
     return showModalBottomSheet(
         context: context,
@@ -392,26 +416,36 @@ BottomSheet(BuildContext context) {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15)),
                       ),
-                      SizedBox(
+
+
+                     const SizedBox(
                         height: 20,
                       ),
+
+
                       Text(
                         "Update Profile Image",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+
+
+
+                     const SizedBox(
                         height: 20,
                       ),
+
+
+
+
                       ListTile(
                         onTap: () {
                           log("Click Edit Caption");
-                          imagePick(ImageSource.camera, context).then((value){
-                            if(value== true) {
+                          imagePick(ImageSource.camera, context).then((value) {
+                            if (value == true) {
                               //  Navigator.pop(context);
-                               Navigator.of(context).pop();
+                              Navigator.of(context).pop();
                             }
                           });
-                         
                         },
                         leading: Icon(
                           Icons.camera,
@@ -439,4 +473,18 @@ BottomSheet(BuildContext context) {
               ),
             )));
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

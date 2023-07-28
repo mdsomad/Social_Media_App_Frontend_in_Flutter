@@ -54,7 +54,7 @@ class SignupProvider with ChangeNotifier {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
     
-    BlocProvider.of<UserCubit>(context).createAccount(userName:userName, email: email, password: password);
+     BlocProvider.of<UserCubit>(context).createAccount(userName:userName, email: email, password: password);     //* <-- createAccount Function Call
   }
 
   @override

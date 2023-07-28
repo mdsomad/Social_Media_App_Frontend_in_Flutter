@@ -11,15 +11,17 @@ class UserToFollowCubit extends Cubit<UserProfileState> {
 
 
 
-  void UserToFollow(String sId) async {
-    try {
-      final userDetails = await _userDetelsFetchByIdRepository.userToFollow(sId);
-       emit(UserProfileDetelsLoadedState(userDetails) );
-    }
-    catch(ex) {
-      emit(UserProfileDetelsErrorState(ex.toString()) );
-    }
+
+//TODO: Create UserToFollow Function
+void UserToFollow(String sId) async {
+  try {
+    final userDetails = await _userDetelsFetchByIdRepository.userToFollow(sId);
+      emit(UserProfileDetelsLoadedState(userDetails) );
   }
+  catch(ex) {
+    emit(UserProfileDetelsErrorState(ex.toString()) );
+  }
+}
 
 
 

@@ -69,7 +69,7 @@ void ChangePassword() async {
    log( "password does not match");
     Utils.ftushBarErrorMessage("Password does not match Confirm Password",context);
   }else{
-     BlocProvider.of<ChangePasswordCubit>(context).ChangePassword(OldPassWord:oldPasswordController.text.toString(),NewPassword: newPasswordController.text.toString());
+     BlocProvider.of<ChangePasswordCubit>(context).ChangePassword(OldPassWord:oldPasswordController.text.toString(),NewPassword: newPasswordController.text.toString());     //* <-- ChangePassword Function Call
   }
   
 }

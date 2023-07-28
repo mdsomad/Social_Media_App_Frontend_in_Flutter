@@ -59,6 +59,9 @@ void PostLink({required String sId,}) async {
 
 
 
+
+
+
 // TODO Create LikeAndUnlikePost function
 Future <bool>UpdateCaption({required String sId,required String caption}) async {
     emit(UpdateCaptionLoadingState(state.post));
@@ -144,11 +147,18 @@ Future <bool>PostDelete({required PostModel post}) async {
 
 
 
+
+
+
+//! Currently not use this function
 // TODO: Create sortAndLoad function
   void sortAndLoad(List<PostModel> posts) {
     // posts.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     emit(PostLoadedState(posts));
   }
+
+
+
 
 
 

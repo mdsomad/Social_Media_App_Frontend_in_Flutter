@@ -59,12 +59,7 @@ showDialogOpt(BuildContext context) {
                     onTap: (){
                       
                         log("Click Camera");
-                        imagePick(ImageSource.camera,context); //* <-- This imagePick function Call
-
-                        //  Timer(const Duration(milliseconds: 100), () {
-                        //     Navigator.of(context).pop();
-                        //   });
-                       
+                        imagePick(ImageSource.camera,context);       //* <-- This imagePick function Call
                         
                     },
 
@@ -78,14 +73,10 @@ showDialogOpt(BuildContext context) {
 
                   ListTile(
                     onTap: (){
-                      //  Navigator.pop(context);
+                      //!  Navigator.pop(context);
                       log("Click Gallery");
                       imagePick(ImageSource.gallery,context);  //* <-- This imagePick Function Call
-                         
-                          // Navigator.pop(context, true);
-                      //  Timer(const Duration(seconds:3), () {
-                      //       Navigator.pop(context);
-                      //   });
+
                     },
                     title: const Text('Gallery'),
                     leading: const Icon(
@@ -137,7 +128,7 @@ showDialogOpt(BuildContext context) {
           onTap: (){
             showDialogOpt(context);
             // Navigator.pop(context);
-            ;}, //* <-- Call This showDialogOpt Function
+          },                                //* <-- Call This showDialogOpt Function
           child: Container(
             width: 190,
             height: 50,

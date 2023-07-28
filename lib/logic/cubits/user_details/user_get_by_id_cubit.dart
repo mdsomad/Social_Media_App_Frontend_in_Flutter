@@ -11,30 +11,37 @@ class UserGetByIdCubit extends Cubit<UserProfileState> {
 
   final _userDetelsFetchByIdRepository = UserProfileDetelsRepository();
 
-  void _initialize() async {
-    emit(UserProfileDetelsLoadingState() );
-    try {
-      final userDetails = await _userDetelsFetchByIdRepository.fetchUserById(data['sId'].toString());
-      emit(UserProfileDetelsLoadedState(userDetails) );
-    }
-    catch(ex) {
-      emit(UserProfileDetelsErrorState(ex.toString()) );
-    }
+
+
+
+//TODO: Create _initialize Function
+void _initialize() async {
+  emit(UserProfileDetelsLoadingState() );
+  try {
+    final userDetails = await _userDetelsFetchByIdRepository.fetchUserById(data['sId'].toString());
+    emit(UserProfileDetelsLoadedState(userDetails) );
   }
-
-
-
-
-
-  void UserToFollow(String sId) async {
-    try {
-      final userDetails = await _userDetelsFetchByIdRepository.userToFollow(sId);
-      emit(UserProfileDetelsLoadedState(userDetails) );
-    }
-    catch(ex) {
-      emit(UserProfileDetelsErrorState(ex.toString()) );
-    }
+  catch(ex) {
+    emit(UserProfileDetelsErrorState(ex.toString()) );
   }
+}
+
+
+
+
+
+
+
+//TODO: Create UserToFollow Function
+void UserToFollow(String sId) async {
+  try {
+    final userDetails = await _userDetelsFetchByIdRepository.userToFollow(sId);
+    emit(UserProfileDetelsLoadedState(userDetails) );
+  }
+  catch(ex) {
+    emit(UserProfileDetelsErrorState(ex.toString()) );
+  }
+}
 
 
 

@@ -299,7 +299,7 @@ class ApiResponseUserToFollow {
 
 
 
-// TODO: Create ApiResponseUserToFollow class
+// TODO: Create ApiResponseChangePassword class
 class ApiResponseChangePassword {
   bool success;
   String? message;
@@ -326,7 +326,7 @@ class ApiResponseChangePassword {
 
 
 
-// TODO: Create ApiResponseUserToFollow class
+// TODO: Create ApiResponseDeleteMe class
 class ApiResponseDeleteMe {
   bool success;
   String? message;

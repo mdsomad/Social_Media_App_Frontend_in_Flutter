@@ -51,7 +51,7 @@ class PostUploadProvider with ChangeNotifier {
 
 //TODO Create postUpload Function
 void postUpload(File file) async {
-     BlocProvider.of<PostCubit>(context).PostUpload(file:file,caption:addCaptionController.text.toString());
+     BlocProvider.of<PostCubit>(context).PostUpload(file:file,caption:addCaptionController.text.toString());       //* <-- PostUpload Function Call
 }
 
 

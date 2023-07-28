@@ -13,33 +13,41 @@ class CommentsRepository{
  final _api = Api();    //* <-- Create Api class object
 final _apiBearerToken = ApiBearerToken();  //* <-- Create Api class object
 
-   //TODO: Create fetchComments function 
-  Future<List<CommentsModel>> fetchComments(String postId) async {
-    try {
-      Response response = await _api.sendRequest.get("/post/getCommentById/$postId");
 
-      ApiResponseComments apiResponseComments = ApiResponseComments.fromResponse(response);
 
-      if(!apiResponseComments.success) {
-        throw apiResponseComments.message.toString();
-      }
-  
-      return (apiResponseComments.data as List<dynamic>).map((json) => CommentsModel.fromJson(json)).toList();
 
-      
+
+  //TODO: Create fetchComments function 
+Future<List<CommentsModel>> fetchComments(String postId) async {
+  try {
+    Response response = await _api.sendRequest.get("/post/getCommentById/$postId");
+
+    ApiResponseComments apiResponseComments = ApiResponseComments.fromResponse(response);
+
+    if(!apiResponseComments.success) {
+      throw apiResponseComments.message.toString();
     }
-    catch(ex) {
-      Loggerclass.logger.e(ex);
-      rethrow;
-    }
+
+    return (apiResponseComments.data as List<dynamic>).map((json) => CommentsModel.fromJson(json)).toList();
+
+    
   }
+  catch(ex) {
+    Loggerclass.logger.e(ex);
+    rethrow;
+  }
+}
 
 
 
 
 
 
-//TODO: Create fetchComments function 
+
+
+
+
+//TODO: Create fetchComments Post function 
 Future<List<CommentsModel>> comment(String commentdata ,PostModel postId) async {
     try {
 
@@ -74,7 +82,10 @@ Future<List<CommentsModel>> comment(String commentdata ,PostModel postId) async 
 
 
 
-  //TODO: Create fetchComments function 
+
+
+
+  //TODO: Create yourDeleteComment function 
   Future<List<CommentsModel>> yourDeleteComment(String commentId ,PostModel postId) async {
     try {
 
@@ -147,7 +158,7 @@ Future<List<CommentsModel>> comment(String commentdata ,PostModel postId) async 
 
 
 
-  //TODO: Create postOwnerDeleteComment function 
+  //TODO: Create updateComment function 
   Future<List<CommentsModel>> updateComment({required String commentId ,required String upDateComment,required PostModel post}) async {
     try {
        

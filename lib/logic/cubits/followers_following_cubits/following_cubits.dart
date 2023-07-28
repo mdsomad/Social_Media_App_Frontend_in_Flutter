@@ -14,52 +14,23 @@ class FollowingCubit extends Cubit<FollowersFollowingState> {
 
   final _followersFollowingRepository = FollowersFollowingRepository();
 
-  void  _fetchFollowing() async {
-    emit(FollowersFollowingLoadingState(state.followers_following));
-    try {
-      final following = await _followersFollowingRepository.fetchFollowing(user.sId!);
-      Loggerclass.logger.i(following);
-      emit(FollowersFollowingLoadedState(following) );
-    }
-    catch(ex) {
-      Loggerclass.logger.e(ex);
-      emit( FollowersFollowingErrorState(ex.toString(),state.followers_following) );
-    }
+
+
+
+ //TODO: Create _fetchFollowing Function
+void  _fetchFollowing() async {
+  emit(FollowersFollowingLoadingState(state.followers_following));
+  try {
+    final following = await _followersFollowingRepository.fetchFollowing(user.sId!);
+    Loggerclass.logger.i(following);
+    emit(FollowersFollowingLoadedState(following) );
+  }
+  catch(ex) {
+    Loggerclass.logger.e(ex);
+    emit( FollowersFollowingErrorState(ex.toString(),state.followers_following) );
+  }
   }
 
-
-
-  
-
-
-
-
-// class FollowingCubit extends Cubit<FollowersFollowingState> {
-//   final UserProfileDetelsModel user;
-//   FollowingCubit(this.user) : super( FollowersFollowingInitialState() ) {
-//   //  _fetchComments();
-//     Loggerclass.logger.wtf("FollowersInitialState Yes");
-//   }
-
-//    final _followersFollowingRepository = FollowersFollowingRepository();
-
-//   // void  _fetchComments() async {
-//   //   emit(CommentsLoadingState(state.comments) );
-//   //   try {
-//   //     final comment = await _commentsRepository.fetchComments(post.sId!);
-//   //     Loggerclass.logger.i(comment);
-//   //     emit(CommentsLoadedState(comment) );
-//   //   }
-//   //   catch(ex) {
-//   //     Loggerclass.logger.e(ex);
-//   //     emit( CommentsErrorState(ex.toString(), state.comments) );
-//   //   }
-
-
-
-
-
-//   // }
 
 
 
