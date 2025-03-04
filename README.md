@@ -1,5 +1,11 @@
 # Social Media App Frontend With Flutter
 
+## Social Media App Demo Video
+
+[![Watch the video](https://img.youtube.com/vi/BOz9q0mYB1I/maxresdefault.jpg)](https://youtu.be/BOz9q0mYB1I)
+
+### [Watch this video on YouTube](https://youtu.be/BOz9q0mYB1I)
+
 - [Social Media App Demo Video Link Click now](https://www.youtube.com/watch?v=tQK6sdG-hJA&list=WL&index=3&ab_channel=Oscar)
 
 ## Social Media App Ui Preview
